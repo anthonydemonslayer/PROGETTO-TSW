@@ -58,3 +58,4 @@ out
 *.iws
 *.iml
 atlassian-ide-plugin.xml
+/build/
