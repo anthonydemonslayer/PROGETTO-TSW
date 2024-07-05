@@ -1,0 +1,99 @@
+@charset "ISO-8859-1";
+
+
+/* Font */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+/* Palette */
+:root {
+  --nero: black;
+  --grigio: #777777;
+  --grigio-sfondo: #F3F3F3;
+  --bianco: white;
+
+  /* CTA */
+  --rosso: #FD0110;
+}
+
+
+
+/********************/
+/* Elementi Desktop */
+/********************/
+
+/* Testo */
+* {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  padding: 0;
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+body {
+	background-color: var(--grigio-sfondo);
+}
+
+.titolo-grande {
+	font-family: "Bebas Neue", sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 3.5rem;
+}
+
+.titolo-piccolo {
+	font-family: "Bebas Neue", sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 2rem;
+}
+
+.grassetto {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--nero);
+    color: white;
+    padding: 25px 25px;
+}
+.navbar-menu {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    flex-grow: 1;
+}
+.navbar-menu a {
+    color: var(--bianco);
+    text-decoration: none;
+    margin-left: 40px;
+}
+.navbar-buttons {
+    display: flex;
+}
+.navbar-buttons button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    margin-left: 40px;
+    
+}
+.navbar-buttons  .icon {
+    background-size: contain;
+    min-height: 1.5rem;
+    min-width: 1.5rem;
+    background-repeat: no-repeat;
+}
