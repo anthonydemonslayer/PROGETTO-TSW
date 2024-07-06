@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebFilter(description = "Applica lo stile css di base a tutte le pagine del sito web", urlPatterns = { "/*" })
 public class GlobalStylesheetFilter extends HttpFilter implements Filter {
-       
+	private static final long serialVersionUID = 1L;
+
 	@Override
     public void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException{
         HttpServletResponse httpResponse = (HttpServletResponse) response;

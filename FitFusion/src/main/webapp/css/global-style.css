@@ -51,10 +51,22 @@ body {
 	font-size: 2rem;
 }
 
-.grassetto {
-  font-family: "Roboto", sans-serif;
+.font-medio {
   font-weight: 500;
-  font-style: normal;
+}
+
+.font-grassetto {
+  font-weight: 700;
+}
+
+a:hover {
+	filter: brightness(80%);
+}
+
+
+/* Pulsanti */
+button:hover {
+	filter: brightness(80%);
 }
 
 
@@ -78,22 +90,23 @@ body {
     text-decoration: none;
     margin-left: 40px;
 }
+
 .navbar-buttons {
     display: flex;
 }
 .navbar-buttons button {
     background-color: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+   
+    min-height: 1.5rem;
+    min-width: 1.5rem;
+    
     border: none;
     color: white;
     padding: 5px 10px;
     margin-left: 10px;
     cursor: pointer;
     margin-left: 40px;
-    
-}
-.navbar-buttons  .icon {
-    background-size: contain;
-    min-height: 1.5rem;
-    min-width: 1.5rem;
-    background-repeat: no-repeat;
+    background-image: url( 'images/strumentiAdmin.svg' );
 }
