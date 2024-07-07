@@ -51,6 +51,10 @@ body {
 	font-size: 2rem;
 }
 
+.paragrafo-grande {
+	font-size: 1.5rem;
+}
+
 .font-medio {
   font-weight: 500;
 }
@@ -60,53 +64,71 @@ body {
 }
 
 a:hover {
-	filter: brightness(80%);
+	filter: brightness(90%);
 }
 
 
 /* Pulsanti */
 button:hover {
-	filter: brightness(80%);
+	filter: drop-shadow(0 4px 4px #00000033) brightness(95%);
+}
+
+button:active {
+	filter: drop-shadow(0 4px 4px #00000033) brightness(85%);
+}
+
+.cta {
+	background-color: #FF000F;
+	border: 0;
+	filter: drop-shadow(0 4px 4px #00000033);
+	padding: 13px;
+	padding-left: 25px;
+	padding-right: 25px;
+	color: var(--bianco);
+	font-weight: 600;
+	max-width: fit-content;
 }
 
 
-/* Navbar */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--nero);
-    color: white;
-    padding: 25px 25px;
-}
-.navbar-menu {
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    flex-grow: 1;
-}
-.navbar-menu a {
-    color: var(--bianco);
-    text-decoration: none;
-    margin-left: 40px;
+
+/*******************/
+/* Elementi Tablet */
+/*******************/
+
+@media screen and (max-width: 1200px) {
+	 * {
+	   font-size: 1.1rem;
+	 }
+	
+	 .titolo-grande {
+	   font-size: 2.8rem;
+	 }
+	
+	 .titolo-piccolo {
+	   font-size: 1.65rem;
+	 }
+  
+	.paragrafo-grande {
+		font-size: 1.25rem;
+	}
 }
 
-.navbar-buttons {
-    display: flex;
-}
-.navbar-buttons button {
-    background-color: transparent;
-    background-size: contain;
-    background-repeat: no-repeat;
-   
-    min-height: 1.5rem;
-    min-width: 1.5rem;
-    
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    margin-left: 10px;
-    cursor: pointer;
-    margin-left: 40px;
-    background-image: url( 'images/strumentiAdmin.svg' );
+
+
+/*******************/
+/* Elementi Mobile */
+/*******************/
+
+@media screen and (max-width: 620px) {
+  * {
+    font-size: 1rem;
+  }
+
+  .titolo-grande {
+    font-size: 2.5rem;
+  }
+
+  .titolo-piccolo {
+    font-size: 1.5rem;
+  }
 }

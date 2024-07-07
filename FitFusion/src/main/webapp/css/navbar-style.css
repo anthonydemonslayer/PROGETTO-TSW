@@ -1,0 +1,56 @@
+@charset "ISO-8859-1";
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--nero);
+    color: white;
+    padding: 22px 25px;
+}
+.navbar-menu {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    flex-grow: 1;
+}
+.navbar-menu a {
+    color: var(--bianco);
+    text-decoration: none;
+    margin-left: 40px;
+}
+
+.navbar-buttons {
+    display: flex;
+}
+
+.navbar-buttons button {
+    background-color: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+   
+    min-height: 1.5rem;
+    min-width: 1.5rem;
+    
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    margin-left: 40px;
+}
+
+
+
+/*******************/
+/* Elementi Mobile */
+/*******************/
+
+@media screen and (max-width: 620px) {
+    .navbar-menu a {
+        max-width: 0;
+        max-height: 0;
+        visibility: hidden;
+    }
+}

@@ -1,5 +1,7 @@
 <%@ page import="utils.UserUtils" %>
 
+<link rel='stylesheet' type='text/css' href='css/navbar-style.css'>
+
 <nav class="navbar">
     <div class="titolo-piccolo">FIT FUSION</div>
     

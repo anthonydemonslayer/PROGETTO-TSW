@@ -1,0 +1,106 @@
+@charset "ISO-8859-1";
+
+
+.pagina-landing {
+	padding-top: 55px;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding-left: 8.3%;
+	padding-right: 8.3%;
+}
+
+.pagina-landing > .lato-sinistro {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	min-width: 40%;
+	min-height: 100vh;
+	padding-top: 15vh;	
+}
+
+
+.pagina-landing > img {
+	min-width: 312px;
+	min-height: 422px;
+	width: 40%;
+	height: 40%;
+	margin-top: -5vh;
+}
+
+.pagina-landing > .lato-sinistro > .info {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	margin-top: 18px;
+}
+
+.pagina-landing > .lato-sinistro > p {
+	margin-top: 0px;
+	margin-bottom: 15px;
+}
+
+	
+.pagina-landing > .lato-sinistro > .titolo-grande {
+  white-space: nowrap;
+  overflow: visible;
+}
+	
+.pagina-landing > .lato-sinistro > .info > img {
+	margin-right: 18px;
+}
+
+.pagina-landing > .lato-sinistro > button {
+	margin-top: 28px;
+}
+
+
+
+/*******************/
+/* Elementi Tablet */
+/*******************/
+
+@media screen and (max-width: 1200px) {
+	.pagina-landing > .lato-sinistro > .titolo-grande {
+		 white-space: normal;
+		 overflow: visible;
+	}
+	
+}
+
+
+
+/*******************/
+/* Elementi Mobile */
+/*******************/
+
+@media screen and (max-width: 620px) {
+	
+	.pagina-landing {
+		flex-wrap: wrap;
+		justify-content: flex-start;	
+	}
+	
+	.pagina-landing > img {
+		min-width: 312px;
+		min-height: 422px;
+		width: 40%;
+		height: 40%;
+		padding: 20px;
+	}
+	
+	.pagina-landing > .lato-sinistro {
+		justify-content: flex-start;
+		align-content: flex-start;
+		max-width: 100%;
+		min-height: 0;
+		padding-top: 0;
+	}
+	
+	.pagina-landing > img {
+		padding-left: 25vw;
+		margin-top: -50px;
+	}
+}
