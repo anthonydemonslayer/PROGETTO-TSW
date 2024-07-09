@@ -6,10 +6,8 @@
 	min-height: 100vh;
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
-	padding-left: 8.3%;
-	padding-right: 8.3%;
 }
 
 .pagina-landing > .lato-sinistro {
@@ -19,6 +17,8 @@
 	min-width: 40%;
 	min-height: 100vh;
 	padding-top: 15vh;	
+	gap: 15px;
+	
 }
 
 
@@ -37,19 +37,11 @@
 	margin-top: 18px;
 }
 
-.pagina-landing > .lato-sinistro > p {
-	margin-top: 0px;
-	margin-bottom: 15px;
-}
 
 	
 .pagina-landing > .lato-sinistro > .titolo-grande {
   white-space: nowrap;
   overflow: visible;
-}
-	
-.pagina-landing > .lato-sinistro > .info > img {
-	margin-right: 18px;
 }
 
 .pagina-landing > .lato-sinistro > button {
@@ -96,7 +88,7 @@
 		align-content: flex-start;
 		max-width: 100%;
 		min-height: 0;
-		padding-top: 0;
+		padding-top: 5vh;
 	}
 	
 	.pagina-landing > img {

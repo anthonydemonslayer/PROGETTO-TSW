@@ -3,12 +3,12 @@
 <link rel='stylesheet' type='text/css' href='css/navbar-style.css'>
 
 <nav class="navbar">
-    <div class="titolo-piccolo">FIT FUSION</div>
+    <div class="titolo piccolo">FIT FUSION</div>
     
     <%!
 	private String getFontWeightCSS(HttpServletRequest request, String pageName) {
     	if (UserUtils.getVisitedJSP(request).equals(pageName))
-    		return "class='font-grassetto'";
+    		return "class='font grassetto'";
     	else
     		return "";
     }

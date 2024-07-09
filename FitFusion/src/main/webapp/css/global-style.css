@@ -1,20 +1,34 @@
-@charset "ISO-8859-1";
-
-
 /* Font */
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import
+	url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap')
+	;
+
+@import
+	url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap')
+	;
 
 
 /* Palette */
 :root {
-  --nero: black;
-  --grigio: #777777;
-  --grigio-sfondo: #F3F3F3;
-  --bianco: white;
+	--nero: #111111ff;
+	--grigio: #777777ff;
+	--grigio-sfondo: #F3F3F3ff;
+	--bianco: white;
+	/* CTA */
+	--rosso: #FD0110ff;
+}
 
-  /* CTA */
-  --rosso: #FD0110;
+span {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+	gap: 15px;
+}
+
+html{
+	overflow-x: hidden;
 }
 
 
@@ -23,44 +37,55 @@
 /* Elementi Desktop */
 /********************/
 
+
 /* Testo */
 * {
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  padding: 0;
-  margin: 0;
-  font-size: 1.25rem;
+	font-family: "Roboto", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	padding: 0;
+	margin: 0;
+	font-size: 1.25rem;
 }
 
 body {
+	position: relative;
 	background-color: var(--grigio-sfondo);
+	padding-left: 8.3vw;
+	padding-right: 8.3vw;
+	overflow-x: hidden;
+	padding-bottom: 8.3vh;
+	
 }
 
-.titolo-grande {
+.titolo {
 	font-family: "Bebas Neue", sans-serif;
 	font-style: normal;
 	font-weight: 400;
+}
+
+.titolo.grande {
 	font-size: 3.5rem;
 }
 
-.titolo-piccolo {
-	font-family: "Bebas Neue", sans-serif;
-	font-style: normal;
-	font-weight: 400;
+.titolo.piccolo {
 	font-size: 2rem;
 }
 
-.paragrafo-grande {
+.paragrafo.grande {
 	font-size: 1.5rem;
 }
 
-.font-medio {
-  font-weight: 500;
+.font.medio {
+	font-weight: 500;
 }
 
-.font-grassetto {
-  font-weight: 700;
+.font.grassetto {
+	font-weight: 700;
+}
+
+.font.piccolo {
+	
 }
 
 a:hover {
@@ -89,6 +114,98 @@ button:active {
 	max-width: fit-content;
 }
 
+.primario {
+	background-color: var(--nero);
+	border: 0;
+	filter: drop-shadow(0 4px 4px #00000033);
+	padding: 13px;
+	padding-left: 25px;
+	padding-right: 25px;
+	color: var(--bianco);
+	font-weight: 600;
+	max-width: fit-content;
+}
+
+
+/* Card */
+.card-grid {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-content: flex-start;
+	flex-wrap: wrap;
+	gap: 10px;
+	row-gap: 75px;
+	min-width: 100%;
+	grid-auto-flow: row;
+}
+
+.card {
+	filter: drop-shadow(0 0px 14px rgba(11, 11, 11, 0.25));
+	background-color: var(--bianco);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 30px;
+	width: fit-content;
+	gap: 40px;
+}
+
+
+/* Checkbox */
+.checkbox-wrapper {
+	display: block;
+	width: 35px;
+	height: 35px;
+	padding: 5px;
+	border: 3px solid var(--nero);
+}
+
+.checkbox-wrapper * {
+	box-sizing: border-box;
+}
+
+.checkbox-wrapper *::before {
+	background-color: var(--rosso);
+}
+
+.checkbox-wrapper *::after {
+	background-color: var(--rosso);
+}
+
+.checkbox-wrapper label {
+	display: block;
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
+}
+
+.checkbox-wrapper input {
+	visibility: hidden;
+	display: none;
+	transform: rotate(45deg);
+}
+
+.checkbox-wrapper input:checked ~ .checkbox {
+	width: 14px;
+	margin-left: 12px;
+	padding-bottom: 10px;
+	border-color: var(--rosso);	
+	border-top-color: transparent;
+	border-left-color: transparent;
+	border-width: 3.5px;
+}
+
+.checkbox-wrapper .checkbox {
+	display: block;
+	transform: rotate(45deg) translate(-5px, -5px) scale(180%) !important;
+	filter: drop-shadow(0 4px 4px #ffffff33);
+	width: inherit;
+	height: inherit;	
+	border: 0px solid transparent;
+	transition: all 0.155s;
+}
+
 
 
 /*******************/
@@ -96,20 +213,20 @@ button:active {
 /*******************/
 
 @media screen and (max-width: 1200px) {
-	 * {
-	   font-size: 1.1rem;
-	 }
-	
-	 .titolo-grande {
-	   font-size: 2.8rem;
-	 }
-	
-	 .titolo-piccolo {
-	   font-size: 1.65rem;
-	 }
-  
-	.paragrafo-grande {
+	* {
+		font-size: 1.1rem;
+	}
+	.titolo.grande {
+		font-size: 2.8rem;
+	}
+	.titolo.piccolo {
+		font-size: 1.65rem;
+	}
+	.paragrafo.grande {
 		font-size: 1.25rem;
+	}	
+	.card-grid  {
+		row-gap: 50px;
 	}
 }
 
@@ -119,16 +236,41 @@ button:active {
 /* Elementi Mobile */
 /*******************/
 
-@media screen and (max-width: 620px) {
-  * {
-    font-size: 1rem;
-  }
-
-  .titolo-grande {
-    font-size: 2.5rem;
-  }
-
-  .titolo-piccolo {
-    font-size: 1.5rem;
-  }
+@media screen and (max-width: 820px) {
+	* {
+		font-size: 1rem;
+	}
+	.titolo.grande {
+		font-size: 2.5rem;
+	}
+	.titolo.piccolo {
+		font-size: 1.5rem;
+	}
+	
+	.checkbox-wrapper {
+		transform: scale(90%);
+	}
+	.checkbox-wrapper .checkbox {
+		transform: scale(100%);
+	}
+	
+	.card-grid {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+		min-width: 100%;
+		grid-auto-flow: row;
+		row-gap: 45px;
+	}
+	.card {
+		filter: drop-shadow(0 0px 14px rgba(11, 11, 11, 0.25));
+		background-color: var(--bianco);
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding: 20px;
+		width: fit-content;
+		gap: 20px;
+	}
 }

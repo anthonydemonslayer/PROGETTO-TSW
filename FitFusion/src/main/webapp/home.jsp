@@ -9,15 +9,14 @@
 		<link rel='stylesheet' type='text/css' href='css/home-style.css'>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	</head>
-	
+
 	<body>	
 		<%@ include file="navbar.jsp" %>
 		
 		<div class="pagina-landing">
-		
 			<div class="lato-sinistro">
-				<p class="titolo-grande">ALLENATI, DIVERTITI, TRANSFORMATI</p>
-				<p class="paragrafo-grande">Scopri un nuovo modo di vivere il fitness.</p>
+				<p class="titolo grande">ALLENATI, DIVERTITI, TRANSFORMATI</p>
+				<p class="paragrafo grande">Scopri un nuovo modo di vivere il fitness.</p>
 				
 				<span class="info">
 					<img alt="" src="images/via.svg"/>
@@ -33,5 +32,8 @@
 			
 			<img alt="" src="images/palestrato.png"/>
 		</div>
+		
+		<%@ include file="corsi.jsp" %>
+		
 	</body>
 </html>
