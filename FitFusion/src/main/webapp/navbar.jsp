@@ -3,7 +3,7 @@
 <link rel='stylesheet' type='text/css' href='css/navbar-style.css'>
 
 <nav class="navbar">
-    <div class="titolo piccolo">FIT FUSION</div>
+    <a href="home.jsp" class="titolo piccolo">FIT FUSION</a>
     
     <%!
 	private String getFontWeightCSS(HttpServletRequest request, String pageName) {

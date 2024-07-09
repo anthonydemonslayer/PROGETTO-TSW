@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
@@ -27,12 +27,13 @@
 					<p>331 221 4353</p> 
 				</span>
 				
-				<button class="cta">VAI AI CORSI</button>
+				<button class="cta" onClick="document.getElementById('corsi').scrollIntoView();" >VAI AI CORSI</button>
 			</div>
 			
 			<img alt="" src="images/palestrato.png"/>
 		</div>
 		
+		<section id="corsi"/>
 		<%@ include file="corsi.jsp" %>
 		
 	</body>

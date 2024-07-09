@@ -11,6 +11,7 @@
 /* Palette */
 :root {
 	--nero: #111111ff;
+	--grigio-scuro: #5E5E5E;
 	--grigio: #777777ff;
 	--grigio-sfondo: #F3F3F3ff;
 	--bianco: white;
@@ -29,6 +30,10 @@ span {
 
 html{
 	overflow-x: hidden;
+}
+
+spacer {
+	margin: 25px;
 }
 
 
@@ -80,13 +85,10 @@ body {
 	font-weight: 500;
 }
 
-.font.grassetto {
+bold, .font.grassetto {
 	font-weight: 700;
 }
 
-.font.piccolo {
-	
-}
 
 a:hover {
 	filter: brightness(90%);
@@ -102,28 +104,57 @@ button:active {
 	filter: drop-shadow(0 4px 4px #00000033) brightness(85%);
 }
 
-.cta {
-	background-color: #FF000F;
-	border: 0;
+button {
 	filter: drop-shadow(0 4px 4px #00000033);
 	padding: 13px;
 	padding-left: 25px;
 	padding-right: 25px;
-	color: var(--bianco);
-	font-weight: 600;
 	max-width: fit-content;
+	font-weight: 600;
 }
 
-.primario {
+button.cta {
+	background-color: #FF000F;
+	border: 0;
+	color: var(--bianco);
+}
+
+button.primario {
 	background-color: var(--nero);
 	border: 0;
-	filter: drop-shadow(0 4px 4px #00000033);
-	padding: 13px;
-	padding-left: 25px;
-	padding-right: 25px;
 	color: var(--bianco);
-	font-weight: 600;
-	max-width: fit-content;
+}
+
+button.primario:hover {
+	filter: drop-shadow(0 4px 4px #00000033) brightness(90%);
+}
+
+button.primario:active {
+	filter: drop-shadow(0 4px 4px #00000033) brightness(80%);
+}
+
+button.secondario {
+	background-color: transparent;
+	border-width: 3px;
+	border-color: var(--nero);
+	color: var(--nero);
+}
+
+button.secondario:hover {
+	color: var(--grigio-scuro);
+}
+
+button.secondario:active {
+	filter: drop-shadow(0 4px 4px #00000033) brightness(115%);
+}
+
+button[disabled] {
+	background-color: transparent;
+	border-style: solid;
+	border-width: 3px;
+	border-color: var(--grigio);
+	color: var(--grigio);
+	filter: drop-shadow(0 4px 4px #00000000);
 }
 
 
@@ -131,9 +162,10 @@ button:active {
 .card-grid {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: space-around;
 	align-content: flex-start;
 	flex-wrap: wrap;
+	
 	gap: 10px;
 	row-gap: 75px;
 	min-width: 100%;
@@ -145,10 +177,15 @@ button:active {
 	background-color: var(--bianco);
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: flex-start;
 	padding: 30px;
 	width: fit-content;
 	gap: 40px;
+	max-width: 25%;
+	flex-shrink: 1;
+	flex-grow: 1;
+	margin-right: auto 
+	
 }
 
 
@@ -212,7 +249,7 @@ button:active {
 /* Elementi Tablet */
 /*******************/
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1400px) {
 	* {
 		font-size: 1.1rem;
 	}
@@ -227,6 +264,9 @@ button:active {
 	}	
 	.card-grid  {
 		row-gap: 50px;
+	}
+	.card {
+		max-width: 40%;
 	}
 }
 
@@ -258,10 +298,9 @@ button:active {
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
-		justify-content: center;
 		min-width: 100%;
 		grid-auto-flow: row;
-		row-gap: 45px;
+		row-gap: 35px;
 	}
 	.card {
 		filter: drop-shadow(0 0px 14px rgba(11, 11, 11, 0.25));
@@ -270,7 +309,10 @@ button:active {
 		flex-direction: column;
 		justify-content: space-between;
 		padding: 20px;
-		width: fit-content;
+		max-width: 95%;
 		gap: 20px;
+	}
+	spacer {
+		margin: 5px;
 	}
 }

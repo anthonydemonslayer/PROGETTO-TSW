@@ -14,16 +14,17 @@
     margin-right: -8.3vw;
 }
 
+.navbar a {
+    color: var(--bianco);
+    text-decoration: none;
+}
+
 .navbar-menu {
     display: flex;
     align-items: center;
     justify-content: end;
     flex-grow: 1;
-}
-.navbar-menu a {
-    color: var(--bianco);
-    text-decoration: none;
-    margin-left: 40px;
+    gap: 40px;
 }
 
 .navbar-buttons {
