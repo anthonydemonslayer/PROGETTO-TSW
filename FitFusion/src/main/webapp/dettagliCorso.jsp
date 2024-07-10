@@ -24,7 +24,6 @@
 				</div>
 			</span>
 			
-			
 			<spacer></spacer>
 			
 			<span style="justify-content: flex-start; gap: 15px;">

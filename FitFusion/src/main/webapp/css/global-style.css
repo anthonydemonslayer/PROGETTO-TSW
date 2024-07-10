@@ -51,6 +51,7 @@ spacer {
 	padding: 0;
 	margin: 0;
 	font-size: 1.25rem;
+	
 }
 
 body {
@@ -95,6 +96,10 @@ a {
 
 a:hover {
 	filter: brightness(90%);
+}
+
+p {
+	width: fit-content;
 }
 
 
@@ -183,7 +188,7 @@ button[disabled] {
 	justify-content: flex-start;
 	padding: 30px;
 	width: fit-content;
-	gap: 40px;
+	gap: 30px;
 	max-width: 25%;
 	flex-shrink: 1;
 	flex-grow: 1;

@@ -21,7 +21,7 @@
     
     <div class="navbar-buttons">
         <button style = "background-image: url( 'images/carrello.svg' );"></button>
-        <button style = "background-image: url( 'images/account.svg' );"></button>
+        <button style = "background-image: url( 'images/account.svg' );" onclick="location.href='dashboardUtente.jsp';" ></button>
         <% if (UserUtils.isUserOfType(session, "admin")) {%>
     		<button style = "background-image: url( 'images/strumentiAdmin.svg' );"></button>
 		<% } %>

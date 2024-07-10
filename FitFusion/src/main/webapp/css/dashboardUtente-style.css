@@ -1,0 +1,54 @@
+@charset "ISO-8859-1";
+
+.pagina-dashboard-utente {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	padding-top: 5vh;
+	gap: 50px;
+}
+
+.pagina-dashboard-utente > .info {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	flex: 1 1 0px;
+}
+
+div.info {
+	display: inline-flex;
+	flex-direction: row;
+	gap: 60px;
+}
+
+div.info > div {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.pagina-dashboard-utente > .lezioni-prenotate {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	gap: 50px;
+	margin-top: 30px;
+}
+
+
+
+/*******************/
+/* Elementi Mobile */
+/*******************/
+
+@media screen and (max-width: 820px) {
+	div.info > div {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+		margin-right: 10px;
+	}
+	
+}
