@@ -1,0 +1,14 @@
+@charset "ISO-8859-1";
+
+.pagina-accesso {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	gap: 30px;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	min-width: 100%;
+	padding-top: 5vh;
+}
+

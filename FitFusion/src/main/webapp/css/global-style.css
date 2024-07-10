@@ -89,6 +89,9 @@ bold, .font.grassetto {
 	font-weight: 700;
 }
 
+a {
+	color: var(--grigio);
+}
 
 a:hover {
 	filter: brightness(90%);
@@ -106,7 +109,7 @@ button:active {
 
 button {
 	filter: drop-shadow(0 4px 4px #00000033);
-	padding: 13px;
+	padding: 11px;
 	padding-left: 25px;
 	padding-right: 25px;
 	max-width: fit-content;
@@ -244,6 +247,34 @@ button[disabled] {
 }
 
 
+/* Text input */
+input[type=text]
+{
+    color: var(--nero);
+    height: 28px;
+    min-width: 100px;
+	flex: 1 1 28px;
+    padding: 10px;
+    text-decoration: none;
+    
+    background-color: transparent;
+	border-style: solid;
+	border-width: 3px;
+	border-color: var(--nero);
+}
+
+.textbox {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	flex-shrink: 1;
+	width: 100%;
+	max-width: 500px;
+	gap: 7px;
+	justify-content: flex-start;
+}
+
+
 
 /*******************/
 /* Elementi Tablet */
@@ -313,6 +344,6 @@ button[disabled] {
 		gap: 20px;
 	}
 	spacer {
-		margin: 5px;
+		margin: 3px;
 	}
 }

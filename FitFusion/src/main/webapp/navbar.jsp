@@ -16,7 +16,7 @@
 	
     <div class="navbar-menu">
         <a href="home.jsp" <%= getFontWeightCSS(request, "home.jsp") %>>HOME</a>
-        <a href="#" <%= getFontWeightCSS(request, "login.jsp") %>>LOGIN / SIGNUP</a>
+        <a href="accesso.jsp" <%= getFontWeightCSS(request, "accesso.jsp") %>>LOGIN / SIGNUP</a>
     </div>
     
     <div class="navbar-buttons">

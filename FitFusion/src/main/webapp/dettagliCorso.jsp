@@ -27,9 +27,9 @@
 			
 			<spacer></spacer>
 			
-			<span style="justify-content: flex-start; gap: 20px;">
+			<span style="justify-content: flex-start; gap: 15px;">
 				<p class="titolo grande">LEZIONI</p>
-				<button id="aggiungiAlCarrello" disabled class="cta">AGGIUNGI AL CARRELLO</button>
+				<button id="aggiungiAlCarrello" disabled class="cta">METTI NEL CARRELLO</button>
 			</span>
 	
 			<p class="paragrafo grande">Spunta le lezioni che vuoi aggiungere al carrello.</p>

@@ -21,7 +21,6 @@
 	
 }
 
-
 .pagina-landing > img {
 	min-width: 312px;
 	min-height: 422px;
@@ -37,8 +36,6 @@
 	gap: 18px;
 }
 
-
-	
 .pagina-landing > .lato-sinistro > .titolo-grande {
   white-space: nowrap;
   overflow: visible;
