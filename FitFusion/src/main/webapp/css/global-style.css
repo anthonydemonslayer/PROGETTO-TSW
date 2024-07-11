@@ -121,6 +121,26 @@ button {
 	font-weight: 600;
 }
 
+button.contieni-immagine {
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	padding: 12px;
+	
+	border: 0;
+	color: var(--bianco);
+	background-color: var(--nero);
+}
+
+button.contieni-immagine.vuoto {
+	filter: drop-shadow(0 4px 4px #00000000);
+	background-color: transparent;
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+
 button.cta {
 	background-color: #FF000F;
 	border: 0;
@@ -304,6 +324,9 @@ input[type=text]
 	.card {
 		max-width: 40%;
 	}
+	button.contieni-immagine {
+		padding: 10px;
+	}
 }
 
 
@@ -328,6 +351,10 @@ input[type=text]
 	}
 	.checkbox-wrapper .checkbox {
 		transform: scale(100%);
+	}
+	
+	button.contieni-immagine {
+		padding: 8px;
 	}
 	
 	.card-grid {

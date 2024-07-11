@@ -1,0 +1,105 @@
+@charset "ISO-8859-1";
+
+
+separator {
+	background-image: url(' ../images/separatore.svg ');
+	min-width: 100%;
+	background-repeat: repeat;
+	margin-top: -50px;
+	margin-bottom: -50px;
+	flex: 1 1 2px;
+	max-height: 2px;
+}
+
+.pagina-carrello {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	padding-top: 50px;
+	gap: 50px;
+	min-width: 100%;
+}
+
+.pagina-carrello > .elenco-prodotti {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	padding: 45px;
+	
+	max-width: 100%;
+	flex: 1 1 350px;
+	
+	border-style: solid;
+	border-width: 3px;
+	border-color: var(--nero);
+	gap: 80px;
+}
+
+.pagina-carrello > .elenco-prodotti > .prodotto {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+	gap: 80px;
+	flex: 1 1 0px;
+}
+
+.pagina-carrello > .elenco-prodotti > .prodotto > .info {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	gap: 5px;
+	min-width: 40%;
+	flex: 1 1 0px;
+}
+
+.pagina-carrello > .totale {
+	display: flex;
+	flex-direction: column;
+	flex-basis: 1 1 0;
+	padding: 60px;
+	gap: 30px;
+}
+
+
+/*******************/
+/* Elementi Tablet */
+/*******************/
+
+@media screen and (max-width: 1400px) {
+	separator {
+		margin-top: -0px;
+		margin-bottom: -0px;
+	}
+	
+	.pagina-carrello {
+		gap: 30px;
+	}
+	
+	.pagina-carrello > .elenco-prodotti {
+		padding: 25px;
+		min-width: 30px;
+		gap: 30px;
+	}
+	
+	.pagina-carrello > .elenco-prodotti > .prodotto {
+		gap: 30px;
+	}
+	
+	.pagina-carrello > .elenco-prodotti > .prodotto > .info {
+		gap: 20px;
+		min-width: 50%;
+	}
+	
+	.pagina-carrello > .totale {
+		display: flex;
+		flex-direction: row;
+		flex-basis: 1 1 0;
+		padding: 0px;
+		justify-content: space-around;
+		gap: 22px;
+	}
+}

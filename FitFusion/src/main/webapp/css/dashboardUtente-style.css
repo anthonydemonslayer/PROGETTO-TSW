@@ -7,6 +7,9 @@
 	justify-content: flex-start;
 	padding-top: 5vh;
 	gap: 50px;
+	min-width: 100%;
+	min-height: 100vh;
+	
 }
 
 .pagina-dashboard-utente > .info {

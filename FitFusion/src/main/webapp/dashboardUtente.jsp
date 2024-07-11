@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Accedi</title>
+		<title>Dashboard Utente</title>
 		<%= response.getHeader("Global-CSS") %>
 		<link rel='stylesheet' type='text/css' href='css/dashboardUtente-style.css'>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
