@@ -300,6 +300,54 @@ input[type=text]
 }
 
 
+/* Menu a tendina */
+
+.custom-select {
+  position: relative;
+  min-width: 120px;
+}
+
+select {
+  	appearance: none;
+  	width: 100%;
+	padding: 0.675em 2em 0.675em 1em;
+	background-color: transparent;
+	border: 2px solid var(--nero);
+	border-radius: 0;
+	color: var(--nero);
+	cursor: pointer;
+}
+
+
+.custom-select::before,
+.custom-select::after {
+  --size: 0.3rem;
+  position: absolute;
+  content: "";
+  right: 1rem;
+  pointer-events: none;
+  border-radius: 0;
+  
+}
+
+.custom-select::before {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-bottom: var(--size) solid black;
+  top: 40%;
+  border-radius: 0;
+}
+
+.custom-select::after {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-top: var(--size) solid black;
+  top: 55%;
+  border-radius: 0;
+}
+
+
+
 
 /*******************/
 /* Elementi Tablet */

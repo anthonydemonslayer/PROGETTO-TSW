@@ -16,7 +16,7 @@
 			<p class="titolo piccolo">Regolare</p>
 			<p>L&rsquo;accesso regolare alla palestra: possibilit&agrave; di frequentare ed utilizzare tutti gli attrezzi della sala attrezzi.</p>
 			<span>
-				<button class="primario" style="min-width: 75%;"> Dettagli </button>
+				<button class="primario" style="min-width: 75%;" onclick="location.href='dettagliCorso.jsp?corso=regolare';"> Dettagli </button>
 				<div class="checkbox-wrapper">
 					<label> <input type="checkbox" /> <span class="checkbox"></span> </label>
 				</div>
@@ -28,7 +28,7 @@
 			<p class="titolo piccolo">Yoga</p>
 			<p>Un corso di yoga completo che include posture, tecniche di respiro, rilassamento e meditazione, adatto a tutti i livelli.</p>
 			<span>
-				<button class="primario" style = "min-width: 75%;">  Dettagli  </button>
+				<button class="primario" style = "min-width: 75%;" onclick="location.href='dettagliCorso.jsp?corso=yoga';">  Dettagli  </button>
 				<div class="checkbox-wrapper">
 					<label> <input type="checkbox" /> <span class="checkbox"></span> </label>
 				</div>
@@ -40,7 +40,7 @@
 			<p class="titolo piccolo">Regolare</p>
 			<p>L&rsquo;accesso regolare alla palestra: possibilit&agrave; di frequentare ed utilizzare tutti gli attrezzi della sala attrezzi.</p>
 			<span>
-				<button class="primario" style = "min-width: 75%;">  Dettagli  </button>
+				<button class="primario" style = "min-width: 75%;" onclick="location.href='dettagliCorso.jsp?corso=regolare';">  Dettagli  </button>
 				<div class="checkbox-wrapper">
 					<label> <input type="checkbox" /> <span class="checkbox"></span> </label>
 				</div>
@@ -52,7 +52,7 @@
 			<p class="titolo piccolo">Yoga</p>
 			<p>Un corso di yoga completo che include posture, tecniche di respiro, rilassamento e meditazione, adatto a tutti i livelli.</p>
 			<span>
-				<button class="primario" style = "min-width: 75%;">  Dettagli  </button>
+				<button class="primario" style = "min-width: 75%;" onclick="location.href='dettagliCorso.jsp?corso=yoga';">  Dettagli  </button>
 				<div class="checkbox-wrapper">
 					<label> <input type="checkbox" /> <span class="checkbox"></span> </label>
 				</div>

@@ -1,0 +1,52 @@
+@charset "ISO-8859-1";
+
+
+.pagina-completa-abbonamento {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	gap: 50px;
+	padding-top: 5vh;
+	justify-content: center;
+	align-items: center;
+	min-width: 100%;
+}
+
+.pagina-completa-abbonamento > .attributi {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 40px;
+	flex: 1 1 80px;
+	min-width: 70%;
+	justify-content: space-evenly;
+	align-items: center;
+	align-content: center;
+	padding: 40px;
+	
+	border-style: solid;
+	border-width: 2px;
+	border-color: var(--nero);
+}
+
+.pagina-completa-abbonamento > .attributi > .attributo {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	gap: 15px;
+	flex: 1 1 80px;
+	max-width: fit-content;
+	margin-right: auto;
+}
+
+
+
+/*******************/
+/* Elementi Mobile */
+/*******************/
+
+@media screen and (max-width: 770px) {
+	.pagina-completa-abbonamento > .attributi {
+		padding: 25px;
+	}
+}

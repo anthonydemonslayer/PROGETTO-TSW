@@ -28,6 +28,7 @@
 							<bold>Corsi scelti:</bold> Yoga, Regolare, Pilates <br/>
 						</p>
 					</div>
+					
 					<p class="paragrafo grande">$50</p>
 					
 					<button class="contieni-immagine vuoto">
