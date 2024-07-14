@@ -1,0 +1,43 @@
+@charset "ISO-8859-1";
+
+
+.navbarAdmin {
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
+	padding-top: 5vh;
+}
+
+.navbarAdmin > .bottoni {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	flex: 0 1 0px;
+	gap: 25px;
+	margin-bottom: 20px;
+}
+
+
+
+/*******************/
+/* Elementi Mobile */
+/*******************/
+
+@media screen and (max-width: 820px) {
+	.navbarAdmin {
+		justify-content: center;
+		align-items: center;
+		gap: 30px;
+	}
+	
+	.navbarAdmin > .bottoni {
+		justify-content: center;
+		flex: 1 1 0px;
+		gap: 25px;
+	}
+	
+	.navbarAdmin > .bottoni > .primario, .secondario {
+		flex: 1 1 0px;
+	}
+	
+}

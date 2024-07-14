@@ -5,13 +5,14 @@ import javax.servlet.http.HttpSession;
 
 public class UserUtils {
 	/**
-	 * Ritorna true se l'utente è del tipo specificato da type
+	 * Ritorna true se l'utente ï¿½ del tipo specificato da type
 	 * @param session la sessione dell'utente
 	 * @param type il tipo dell'utente
 	 * @return risultato booleano
 	 */
 	public static Boolean isUserOfType(HttpSession session, String type) {
         String userType = (String) session.getAttribute("userType");
+        if (userType == null) userType = "guest";
         return type.equals(userType);
     }
 	

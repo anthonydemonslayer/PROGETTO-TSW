@@ -6,17 +6,28 @@
 		<meta charset="UTF-8">
 		<title>Dashboard Utente</title>
 		<%= response.getHeader("Global-CSS") %>
-		<link rel='stylesheet' type='text/css' href='css/dashboardUtente-style.css'>
+		<link rel="stylesheet" type="text/css" href="/FitFusion/css/dashboardUtente-style.css">
+		
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	</head>
 	
 	<body>
+		<% 
+		Boolean embed = (request.getParameter("embed") != null) ? request.getParameter("embed").equals("true") : false;
+		if (embed == false) {
+		%>
 		<%@ include file="navbar.jsp" %>
-		
 		<spacer></spacer>
+		<% } %>
+		
 		
 		<div class="pagina-dashboard-utente">
+		
+			<% 
+			if (embed == false) {
+			%>
 			<p class="titolo grande">DASHBOARD UTENTE</p>
+			<% } %>
 			
 			<div class="info">
 				<div>
@@ -26,6 +37,7 @@
 						<bold>Nome:</bold> Giovanni <br/>
 						<bold>Cognome:</bold> Brancaccio <br/>
 						<bold>Telefono:</bold> 123456789 <br/>
+						<bold>Tipo account:</bold> Utente <br/>
 					</p>
 				</div>
 				

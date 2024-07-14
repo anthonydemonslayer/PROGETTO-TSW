@@ -1,6 +1,6 @@
 <%@ page import="utils.UserUtils" %>
 
-<link rel='stylesheet' type='text/css' href='css/navbar-style.css'>
+<link rel="stylesheet" type="text/css" href="/FitFusion/css/navbar-style.css">
 
 <nav class="navbar">
     <a href="home.jsp" class="titolo piccolo">FIT FUSION</a>
@@ -22,8 +22,8 @@
     <div class="navbar-buttons">
         <button style = "background-image: url( 'images/carrello.svg' );" onclick="location.href='carrello.jsp';"></button>
         <button style = "background-image: url( 'images/account.svg' );" onclick="location.href='dashboardUtente.jsp';" ></button>
-        <% if (UserUtils.isUserOfType(session, "admin")) {%>
-    		<button style = "background-image: url( 'images/strumentiAdmin.svg' );"></button>
+        <% if (UserUtils.isUserOfType(session, "guest")) {%>
+    		<button style = "background-image: url( 'images/strumentiAdmin.png' );" onclick="location.href='gestisciUtenti.jsp';"></button>
 		<% } %>
     </div>
 </nav>
