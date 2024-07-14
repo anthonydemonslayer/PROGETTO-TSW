@@ -1,4 +1,4 @@
 package model.utente;
 
-public enum tipoUtente {Utente, istruttore}
+public enum tipoUtente {Utente, istruttore, amministratore}
 
