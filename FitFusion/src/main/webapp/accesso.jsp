@@ -19,49 +19,49 @@
 		String tipoAccesso = (String) request.getParameter("tipo");
 		if (tipoAccesso != null && tipoAccesso.equals("signup")) { 
 		%>
-		<div class="pagina-accesso">
+		<form action="/autenticazione" method="post">
 			<p class="titolo grande">REGISTRATI</p>
 		
 			<div class="textbox">
 				<p>Nome</p>
-				<input type="text" id="textNome"></input>
+				<input type="text" id="textNome" required autofocus></input>
 			</div>
 			<div class="textbox">
 				<p>Cognome</p>
-				<input type="text" id="textCognome"></input>
+				<input type="text" id="textCognome" required autofocus></input>
 			</div>
 			<div class="textbox">
 				<p>Email</p>
-				<input type="text" id="textEmail"></input>
+				<input type="text" id="textEmail" required autofocus></input>
 			</div>
 			<div class="textbox">
 				<p>Telefono</p>
-				<input type="text" id="textTelefono"></input>
+				<input type="text" id="textTelefono" required autofocus></input>
 			</div>
 			<div class="textbox">
 				<p>Password</p>
-				<input type="text" id="textPassword"></input>
+				<input type="text" id="textPassword" required autofocus></input>
 			</div>
 			
 			<a href="accesso.jsp?tipo=login">Sei gi&agrave; registrato? Accedi</a>
-			<button class="cta">REGISTRATI</button>
-		</div>
+			<button type="submit" class="cta">REGISTRATI</button>
+		</form>
 		<% } else { %>
-		<div class="pagina-accesso">
+		<form action="/autenticazione" method="post">
 			<p class="titolo grande">ACCEDI</p>
 		
 			<div class="textbox">
 				<p>Email</p>
-				<input type="text" id="textEmail"></input>
+				<input type="text" id="textEmail" required autofocus></input>
 			</div>
 			<div class="textbox">
 				<p>Password</p>
-				<input type="text" id="textPassword"></input>
+				<input type="text" id="textPassword" required autofocus></input>
 			</div>
 			
 			<a href="accesso.jsp?tipo=signup">Non sei ancora registrato? Registrati</a>
-			<button class="cta">ACCEDI</button>
-		</div>
+			<button type="submit" class="cta">ACCEDI</button>
+		</form>
 		<% } %>
 		
 	</body>

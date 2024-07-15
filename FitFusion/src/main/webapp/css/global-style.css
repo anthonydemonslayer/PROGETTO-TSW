@@ -273,10 +273,10 @@ button[disabled] {
 
 
 /* Text input */
-input[type=text]
+input[type=text], textarea
 {
     color: var(--nero);
-    height: 28px;
+    max-height: 28px;
     min-width: 100px;
 	flex: 1 1 28px;
     padding: 10px;
@@ -286,6 +286,12 @@ input[type=text]
 	border-style: solid;
 	border-width: 3px;
 	border-color: var(--nero);
+}
+
+textarea {
+	max-height: 200px;
+	min-height: 120px;
+	resize: none;
 }
 
 .textbox {
@@ -346,6 +352,18 @@ select {
   border-radius: 0;
 }
 
+
+/* Form */
+form {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	flex: 1 1 0;
+	gap: 30px;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+}
 
 
 
