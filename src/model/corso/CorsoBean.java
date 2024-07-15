@@ -4,12 +4,6 @@ public class CorsoBean {
 	String nomeCorso;
 	String descrizione;
 	
-	public CorsoBean(String nomeCorso, String descrizione) {
-		super();
-		this.nomeCorso = nomeCorso;
-		this.descrizione = descrizione;
-	}
-	
 	public String getNomeCorso() {
 		return nomeCorso;
 	}
