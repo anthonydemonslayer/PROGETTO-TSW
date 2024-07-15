@@ -22,5 +22,13 @@ public class CarrelloModel {
 		this.carrelloAbbonamenti = carrelloAbbonamenti;
 	}
 
-	
+	public synchronized void aggiungiAbbonamento(int id, float costo) {
+		for(AbbonamentoBean a : carrelloAbbonamenti) {
+			if(a.getIdAbbonamento() == id && 
+				a.getCosto() == costo) {
+				a.setIdAbbonamento(id);
+			}
+			return;
+		}
+	}
 }
