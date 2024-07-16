@@ -366,6 +366,21 @@ form {
 }
 
 
+/* date */
+.datetime-wrapper {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  width: max-content;
+}
+
+.datetime-wrapper input {
+  padding: 0.675em 1em 0.675em 1em;
+  border: 2px solid var(--nero);
+  background-color: transparent;
+}
+
+
 
 /*******************/
 /* Elementi Tablet */

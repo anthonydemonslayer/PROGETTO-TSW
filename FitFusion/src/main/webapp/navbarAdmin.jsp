@@ -18,7 +18,7 @@
 	<div class="bottoni">
 		<button <%= getButtonClass(request, "gestisciUtenti.jsp") %> onclick="location.href='gestisciUtenti.jsp';">LISTA UTENTI</button>
 		<button <%= getButtonClass(request, "gestisciCorsi.jsp") %> onclick="location.href='gestisciCorsi.jsp';">GESTISCI CORSI</button>
-		<button <%= getButtonClass(request, "gestisciLezioni.jsp") %> onclick="location.href='listaUtenti.jsp';">GESTISCI LEZIONI</button>
+		<button <%= getButtonClass(request, "gestisciLezioni.jsp") %> onclick="location.href='gestisciLezioni.jsp';">GESTISCI LEZIONI</button>
 		<button <%= getButtonClass(request, "storicoOrdini.jsp") %> onclick="location.href='listaUtenti.jsp';">STORICO ORDINI</button>
 	</div>
 </div>
