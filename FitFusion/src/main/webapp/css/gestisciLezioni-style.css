@@ -4,7 +4,7 @@
 .pagina-gestisci-lezioni {
 	display: flex;
 	flex-direction: column;
-	gap: 50px;
+	gap: 80px;
 	justify-content: flex-start;
 	flex: 1 1 0px;
 	min-width: 100%;

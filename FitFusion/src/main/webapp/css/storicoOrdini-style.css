@@ -1,11 +1,12 @@
 @charset "ISO-8859-1";
 
 
-.pagina-gestisci-corsi {
+.pagina-storico-ordini {
 	display: flex;
 	flex-direction: column;
-	gap: 80px;
+	gap: 60px;
 	justify-content: flex-start;
+	align-items: flex-start;
 	flex: 1 1 0px;
 	min-width: 100%;
 }
@@ -33,11 +34,11 @@
 /*******************/
 
 @media screen and (max-width: 820px) {
-	.pagina-gestisci-corsi {
-		gap: 45px;
+	.pagina-gestisci-lezioni {
+		gap: 15px;
 	}
 	
-	.pagina-gestisci-corsi > .forms {
+	.pagina-gestisci-lezioni > .forms {
 		gap: 50px;
 	}
 	
