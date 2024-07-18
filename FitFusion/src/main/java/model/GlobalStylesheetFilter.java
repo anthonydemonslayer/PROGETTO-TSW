@@ -1,14 +1,18 @@
-package control;
+package model;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.utente.UtenteDAO;
+import model.corso.*;
 
-@WebFilter(description = "Applica lo stile css di base a tutte le pagine del sito web", urlPatterns = { "/*" })
+@WebFilter(description = "Applica lo stile css di base a tutte le pagine del sito web", urlPatterns = { "*.jsp" }, dispatcherTypes = {DispatcherType.REQUEST, DispatcherType.FORWARD})
 public class GlobalStylesheetFilter extends HttpFilter implements Filter {
 	private static final long serialVersionUID = 1L;
 
@@ -20,6 +24,17 @@ public class GlobalStylesheetFilter extends HttpFilter implements Filter {
         
         httpResponse.setHeader("Global-CSS", "<link rel='stylesheet' type='text/css' href='"+cssUrl+"'>");
         chain.doFilter(request, response);
+        
+        UtenteDAO u = new UtenteDAO();
+        try {
+			//u.doRetriveAll("").stream().forEach((e) -> System.out.println(e.toString()));
+        	System.out.println(u.doRetreiveByKey("utente1@example.com").toString());
+        	System.out.println(request.getContextPath());
+        	System.out.println((new CorsoDAO()).doRetreiveByKey("Regolare").toString());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     @Override

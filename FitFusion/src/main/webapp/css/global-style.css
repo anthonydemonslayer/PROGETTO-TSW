@@ -273,7 +273,7 @@ button[disabled] {
 
 
 /* Text input */
-input[type=text], textarea
+input
 {
     color: var(--nero);
     max-height: 28px;
@@ -292,6 +292,10 @@ textarea {
 	max-height: 200px;
 	min-height: 120px;
 	resize: none;
+	background-color: transparent;
+	border-style: solid;
+	border-width: 3px;
+	border-color: var(--nero);
 }
 
 .textbox {
@@ -411,16 +415,22 @@ form {
 	.paragrafo.grande {
 		font-size: 1.25rem;
 	}	
-	.card-grid  {
-		row-gap: 50px;
-	}
-	.card {
-		max-width: 40%;
-	}
 	button.contieni-immagine {
 		padding: 10px;
 	}
+	.card-grid  {
+		gap: 15px;
+		row-gap: 50px;
+		column-gap: 10px;
+	}
 }
+
+@media screen and (max-width: 980px) {
+	.card {
+		max-width: 35%;
+	}
+}
+
 
 
 
@@ -450,6 +460,12 @@ form {
 		padding: 8px;
 	}
 	
+	spacer {
+		margin: 3px;
+	}
+}
+
+@media screen and (max-width: 620px) {
 	.card-grid {
 		display: flex;
 		flex-direction: row;
@@ -467,8 +483,5 @@ form {
 		padding: 20px;
 		max-width: 95%;
 		gap: 20px;
-	}
-	spacer {
-		margin: 3px;
 	}
 }

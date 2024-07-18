@@ -93,6 +93,11 @@
 						</div>
 					</div>
 					
+					<div class="textbox">
+						<p>Costo</p>
+						<input type="number" name="costo" required autofocus></input>
+					</div>
+			
 					<button type="submit" class="primario">AGGIUNGI CORSO</button>
 				</form>
 				

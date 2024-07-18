@@ -1,3 +1,7 @@
+<%@ page import="java.util.List" %>
+<%@ page import="model.corso.*" %>
+
+
 <link rel='stylesheet' type='text/css' href='css/corsi-style.css'>
 
 <spacer></spacer>
@@ -11,52 +15,26 @@
 	<p class="paragrafo grande">Spunta i corsi che vuoi includere nell&rsquo;abbonamento, o clicca su &ldquo;Dettagli&rdquo; per prenotare le singole lezioni.</p>
 	
 	<div class="card-grid">
+	
+		<% 
+	    List<CorsoBean> corsi = (List<CorsoBean>)request.getAttribute("corsi");
+	    if(corsi != null && !corsi.isEmpty()) {
+        for(CorsoBean corso : corsi) {
+        	String nome = corso.getNomeCorso();
+	    %>
 		<div class="card corso">
-			<img alt="" src="images/regolare.png">
-			<p class="titolo piccolo">Regolare</p>
-			<p>L&rsquo;accesso regolare alla palestra: possibilit&agrave; di frequentare ed utilizzare tutti gli attrezzi della sala attrezzi.</p>
+			<img alt="" src="images/<%= nome %>.jpg">
+			<p class="titolo piccolo"><%= nome %></p>
+			<p class="descrizione"><%= corso.getDescrizione() %></p>
 			<span>
-				<button class="primario" style="min-width: 75%;" onclick="location.href='dettagliCorso.jsp?corso=regolare';"> Dettagli </button>
+				<button class="primario" style="min-width: 75%;" onclick="location.href='dettagliCorso.jsp?corso=<%= nome %>';"> Dettagli </button>
 				<div class="checkbox-wrapper">
-					<label> <input type="checkbox" /> <span class="checkbox"></span> </label>
+					<label> <input type="checkbox" name="corsiSelezionati"/> <span class="checkbox"></span> </label>
 				</div>
 			</span>
 		</div>
-		
-		<div class="card corso">
-			<img alt="" src="images/yoga.png">
-			<p class="titolo piccolo">Yoga</p>
-			<p>Un corso di yoga completo che include posture, tecniche di respiro, rilassamento e meditazione, adatto a tutti i livelli.</p>
-			<span>
-				<button class="primario" style = "min-width: 75%;" onclick="location.href='dettagliCorso.jsp?corso=yoga';">  Dettagli  </button>
-				<div class="checkbox-wrapper">
-					<label> <input type="checkbox" /> <span class="checkbox"></span> </label>
-				</div>
-			</span>
-		</div>
-		
-		<div class="card corso">
-			<img alt="" src="images/regolare.png">
-			<p class="titolo piccolo">Regolare</p>
-			<p>L&rsquo;accesso regolare alla palestra: possibilit&agrave; di frequentare ed utilizzare tutti gli attrezzi della sala attrezzi.</p>
-			<span>
-				<button class="primario" style = "min-width: 75%;" onclick="location.href='dettagliCorso.jsp?corso=regolare';">  Dettagli  </button>
-				<div class="checkbox-wrapper">
-					<label> <input type="checkbox" /> <span class="checkbox"></span> </label>
-				</div>
-			</span>
-		</div>
-		
-		<div class="card corso">
-			<img alt="" src="images/yoga.png">
-			<p class="titolo piccolo">Yoga</p>
-			<p>Un corso di yoga completo che include posture, tecniche di respiro, rilassamento e meditazione, adatto a tutti i livelli.</p>
-			<span>
-				<button class="primario" style = "min-width: 75%;" onclick="location.href='dettagliCorso.jsp?corso=yoga';">  Dettagli  </button>
-				<div class="checkbox-wrapper">
-					<label> <input type="checkbox" /> <span class="checkbox"></span> </label>
-				</div>
-			</span>
-		</div>
+	    <%
+        }}
+	    %>
 	</div>
 </div>

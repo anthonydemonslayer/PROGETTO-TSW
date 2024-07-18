@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="model.corso.*" %>
 
+<%
+CorsoBean corso = (CorsoBean) request.getAttribute("corso");
+if (corso==null) response.sendRedirect("home.jsp");
+%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -17,10 +22,10 @@
 			<p class="titolo grande">INFO CORSO</p>
 			
 			<span class="info-corso">
-				<img alt="" src="images/regolare.png"/>
+				<img alt="" src="images/<%= corso.getNomeCorso() %>.jpg"/>
 				<div class="descrizione">
-					<p class="titolo piccolo">REGOLARE</p>
-					<p class="paragrafo grande">L&rsquo;accesso regolare alla palestra: possibilit&agrave; di frequentare ed utilizzare tutti gli attrezzi della sala attrezzi.</p>
+					<p class="titolo piccolo"><%= corso.getNomeCorso() %></p>
+					<p class="paragrafo grande"><%= corso.getDescrizione() %></p>
 				</div>
 			</span>
 			

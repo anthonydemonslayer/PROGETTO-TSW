@@ -14,7 +14,7 @@ CREATE TABLE Utente (
     cognome VARCHAR(30) NOT NULL,
     telefono VARCHAR(25),
     password VARCHAR(128) NOT NULL,
-    istruttore BOOLEAN DEFAULT FALSE
+    tipoUtente VARCHAR(50) DEFAULT "utente"
 );
 
 DROP TABLE IF EXISTS Email;
@@ -29,7 +29,7 @@ DROP TABLE IF EXISTS Corso;
 
 CREATE TABLE Corso (
 	nomeCorso VARCHAR(50) PRIMARY KEY,
-	descrizione TEXT DEFAULT 'Nessuna descrizione'
+	descrizione TEXT
 );
 
 DROP TABLE IF EXISTS Lezione;
