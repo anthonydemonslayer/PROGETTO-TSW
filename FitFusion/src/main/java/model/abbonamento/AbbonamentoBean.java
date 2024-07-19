@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class AbbonamentoBean {
 	int idAbbonamento;
-	float costo;
+	float costo = 0;
 	LocalDate dataAcquisto;
 	int durata;
 	int maxAccessiSettimanali;

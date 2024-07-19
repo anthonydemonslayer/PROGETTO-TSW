@@ -36,23 +36,26 @@ public class AbbonamentoDAO implements DAOInterface<AbbonamentoBean, Integer> {
 	@Override
 	public AbbonamentoBean doRetreiveByKey(Integer code) throws SQLException {
 		AbbonamentoBean abbonamentoBean = new AbbonamentoBean();
-		String query = "SELECT Abbonamento.* FROM " + TABLE_NAME + " NATURAL JOIN Utente WHERE Utente.nome = Utente1 AND Utnete.cognome = Cognome1";
+		String query = "SELECT Abbonamento.* FROM " + TABLE_NAME + " NATURAL JOIN Utente WHERE idUtente = ?";
 		
 		try (Connection connection = ds.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+			preparedStatement.setInt(1, code);
 			ResultSet resultSet = preparedStatement.executeQuery();
-			setAbbonamento(resultSet, abbonamentoBean);
+			if (resultSet.next()) {
+				setAbbonamento(resultSet, abbonamentoBean);
+				return abbonamentoBean;
+			} else {
+				return null;
+			}
 		}
-		return abbonamentoBean;
 	}
 
 	@Override
 	public Collection<AbbonamentoBean> doRetriveAll(String order) throws SQLException {
 		Collection<AbbonamentoBean> abbonamenti = new ArrayList<>();
-		String query = "SELECT * FROM " + TABLE_NAME + " WHERE nomeUtente = ? AND cognome = ?";
+		String query = "SELECT * FROM " + TABLE_NAME + "";
 		
 		try (Connection connection = ds.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-			preparedStatement.setString(1, "nomeUtente");
-			preparedStatement.setString(2, "cognome");
 			ResultSet resultSet = preparedStatement.executeQuery();
 			
 			while(resultSet.next()) {
@@ -60,8 +63,9 @@ public class AbbonamentoDAO implements DAOInterface<AbbonamentoBean, Integer> {
 				setAbbonamento(resultSet, abbonamentoBean);
 				abbonamenti.add(abbonamentoBean);
 			}
+			
+			return abbonamenti;
 		}
-		return abbonamenti;
 	}
 
 	@Override

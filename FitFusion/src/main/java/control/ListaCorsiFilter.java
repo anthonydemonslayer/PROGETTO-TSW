@@ -1,4 +1,4 @@
-package model.corso;
+package control;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -15,6 +15,9 @@ import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import model.corso.CorsoBean;
+import model.corso.CorsoDAO;
 
 
 

@@ -1,4 +1,10 @@
+<%@page import="model.abbonamento.*"%>
+<%@ page import="model.utente.*" %>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<% UtenteBean utente_ = (UtenteBean) request.getSession().getAttribute("utente"); %>
+
 
 <!DOCTYPE html>
 <html>
@@ -33,24 +39,29 @@
 				<div>
 					<p class="titolo piccolo">INFO ACCOUNT</p>
 					<p class="paragrafo grande">
-						<bold>Email:</bold> giovanni@gmail.com <br/>
-						<bold>Nome:</bold> Giovanni <br/>
-						<bold>Cognome:</bold> Brancaccio <br/>
-						<bold>Telefono:</bold> 123456789 <br/>
-						<bold>Tipo account:</bold> Utente <br/>
+						<bold>Email:</bold> <%= utente_.getIndirizzo() %> <br/>
+						<bold>Nome:</bold> <%= utente_.getNomeUtente() %> <br/>
+						<bold>Cognome:</bold> <%= utente_.getCognome() %> <br/>
+						<bold>Telefono:</bold> <%= utente_.getTelefono().toString() %> <br/>
+						<bold>Tipo account:</bold> <%= utente_.getTipoUtente().toString() %> <br/>
 					</p>
 				</div>
 				
+				<%
+				AbbonamentoBean abb = (new AbbonamentoDAO()).doRetreiveByKey(utente_.getIdUtente());
+				if (abb != null) {
+				%>
 				<div>
 					<p class="titolo piccolo">ABBONAMENTO ATTIVO</p>
 					<p class="paragrafo grande">
-						<bold>Validita:</bold> 26/06/2024 - 26/07/2024 <br/>
-						<bold>Max accessi settimanali:</bold> 3 <br/>
+						<bold>Validita:</bold> <%= abb.getDataAcquisto().toString() %> - <%= abb.getDataAcquisto().plusMonths(abb.getDurata()) %> <br/>
+						<bold>Max accessi settimanali:</bold> <%= abb.getMaxAccessiSettimanali() %> <br/>
 						<bold>Corsi scelti:</bold> Yoga, Regolare, Pilates <br/>
-						<bold>Costo:</bold> $50 <br/>
+						<bold>Costo:</bold> $<%= abb.getCosto() %> <br/>
 					</p>
 				</div>
 			</div>
+			<% } %>
 			
 			<div class="lezioni-prenotate">
 				<p class="titolo piccolo">LEZIONI PRENOTATE</p>
