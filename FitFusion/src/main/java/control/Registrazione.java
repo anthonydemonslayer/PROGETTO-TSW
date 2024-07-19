@@ -27,10 +27,8 @@ public class Registrazione extends HttpServlet {
 		
 		try {
 			if(utenteDAO.doRetreiveByKey(email) != null) {
-				request.getSession().setAttribute("utentePresente", true);
 				response.sendRedirect("accesso.jsp");
 			} else {
-				request.getSession().setAttribute("utentePresente", false);
 				UtenteBean utente = new UtenteBean();
 				utente.setNomeUtente(nome);
 				utente.setCognome(cognome);
@@ -40,6 +38,7 @@ public class Registrazione extends HttpServlet {
 				utente.setIndirizzo(email);
 
 				utenteDAO.doSave(utente);
+				request.getSession().setAttribute("utente", utente);
 				response.sendRedirect("home.jsp");
 			}
 		} catch(SQLException e) {

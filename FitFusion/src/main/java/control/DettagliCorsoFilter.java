@@ -1,4 +1,4 @@
-package model.corso;
+package control;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -15,6 +15,8 @@ import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import model.corso.CorsoDAO;
 
 
 
@@ -36,7 +38,7 @@ public class DettagliCorsoFilter extends HttpFilter implements Filter {
     		String corso = (String) request.getParameter("corso");
 
     		if (corso != null) {
-		        request.setAttribute("corso", corsoDAO.doRetreiveByKey(corso)); // Passa la lista alla JSP
+		        request.setAttribute("corso", corsoDAO.doRetreiveByKey(corso));
     		}
 	        chain.doFilter(request, response); // Continua la catena di filtri
 		} catch (SQLException e) {

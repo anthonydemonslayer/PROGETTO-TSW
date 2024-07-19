@@ -14,16 +14,17 @@ import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.utente.TipoUtente;
 import model.utente.UtenteBean;
 
 
-@WebFilter(urlPatterns = {"/dashboardUtente.jsp", "/carrello.jsp"}, dispatcherTypes = {DispatcherType.REQUEST, DispatcherType.FORWARD})
-public class ReindirizzaAccessoFilter extends HttpFilter implements Filter {
+@WebFilter(urlPatterns = {"/adminGestisciUtenti.jsp", "/adminGestisciLezioni.jsp", "/adminGestisciCorsi.jsp", "/adminStoricoOrdini.jsp"}, dispatcherTypes = {DispatcherType.REQUEST, DispatcherType.FORWARD})
+public class PagineAdminFilter extends HttpFilter implements Filter {
        
     /**
      * @see HttpFilter#HttpFilter()
      */
-    public ReindirizzaAccessoFilter() {
+    public PagineAdminFilter() {
         super();
     }
 
@@ -38,7 +39,7 @@ public class ReindirizzaAccessoFilter extends HttpFilter implements Filter {
 	 */
 	public void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
 		UtenteBean utente = (UtenteBean) request.getSession().getAttribute("utente");
-		if (utente == null) response.sendRedirect("accesso.jsp");
+		if (utente == null || utente.getTipoUtente() != TipoUtente.Amministratore) response.sendRedirect("accesso.jsp");
 		else chain.doFilter(request, response);
 	}
 
