@@ -7,28 +7,56 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class CarrelloModel {
-	private ArrayList<AbbonamentoBean> carrelloAbbonamenti;
+	private ArrayList<LezioneBean> carrello;
 	
 	public CarrelloModel() {
-		carrelloAbbonamenti = new ArrayList<>();
+		carrello = new ArrayList<>();
 		
 	}
 
-	public ArrayList<AbbonamentoBean> getCarrelloAbbonamenti() {
-		return carrelloAbbonamenti;
+	public ArrayList<LezioneBean> getCarrello() {
+		return carrello;
 	}
 
-	public void setCarrelloAbbonamenti(ArrayList<AbbonamentoBean> carrelloAbbonamenti) {
-		this.carrelloAbbonamenti = carrelloAbbonamenti;
+	public void setCarrello(ArrayList<LezioneBean> carrello) {
+		this.carrello = carrello;
 	}
 
 	public synchronized void aggiungiAbbonamento(int id, float costo) {
-		for(AbbonamentoBean a : carrelloAbbonamenti) {
-			if(a.getIdAbbonamento() == id && 
-				a.getCosto() == costo) {
-				a.setIdAbbonamento(id);
-			}
+		for(LezioneBean l : carrello) {
+			if(l.getIdLezione() == id &&
+				l.getCosto() == costo) {
+					l.aumentaNumeroIscritti();
+				}
 			return;
 		}
+		
+		LezioneDAO lezioneDAO = new LezioneDAO();
+		
+		try {
+			LezioneBean lezione = lezioneDAO.doRetreiveByKey(id);
+			carrello.add(lezione);
+		} catch (SQLException e) {
+			throw new GenericError();
+		}
 	}
+		
+		public synchronized void setIscritti(int id, int numeroIscritti, float costo) {
+			for(LezioneBean l: carrello) {
+				if(l.getIdLezione() == id && l.getCosto() == costo) {
+					if(l.getNumIscritti() <=0 || numeroIscritti == 0)
+						carrello.remove(l);
+					else
+						l.setNumIscritti(numeroIscritti);
+					return;
+				}
+			}
+		}
+		
+		public synchronized void rimuovi(int id, float costo) {
+			carrello.removeIf(l -> l.getIdLezione() == id && 
+					l.getCosto() == costo);
+			
+		}
+		
 }

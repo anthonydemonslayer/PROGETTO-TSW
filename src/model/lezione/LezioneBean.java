@@ -1,28 +1,17 @@
 package model.lezione;
 
-import java.time.LocalDateTime;
+import java.sql.Date;
+import java.time.LocalDate;
 
 public class LezioneBean {
 	
 	int idLezione;
 	float costo;
-	LocalDateTime dataOra;
+	LocalDate dataOra;
 	int durata;
 	int numIscritti;
 	int idUtente;
-	int nomeCorso;
-	
-	public LezioneBean(int idLezione, float costo, LocalDateTime dataOra, int durata, int numIscritti, int idUtente,
-			int nomeCorso) {
-		super();
-		this.idLezione = idLezione;
-		this.costo = costo;
-		this.dataOra = dataOra;
-		this.durata = durata;
-		this.numIscritti = numIscritti;
-		this.idUtente = idUtente;
-		this.nomeCorso = nomeCorso;
-	}
+	String nomeCorso;
 	
 	public int getIdLezione() {
 		return idLezione;
@@ -36,11 +25,11 @@ public class LezioneBean {
 	public void setCosto(float costo) {
 		this.costo = costo;
 	}
-	public LocalDateTime getDataOra() {
+	public LocalDate getDataOra() {
 		return dataOra;
 	}
-	public void setDataOra(LocalDateTime dataOra) {
-		this.dataOra = dataOra;
+	public void setDataOra(LocalDate data) {
+		this.dataOra = data;
 	}
 	public int getDurata() {
 		return durata;
@@ -60,11 +49,19 @@ public class LezioneBean {
 	public void setIdUtente(int idUtente) {
 		this.idUtente = idUtente;
 	}
-	public int getNomeCorso() {
+	public String getNomeCorso() {
 		return nomeCorso;
 	}
-	public void setNomeCorso(int nomeCorso) {
+	public void setNomeCorso(String nomeCorso) {
 		this.nomeCorso = nomeCorso;
+	}
+	
+	public void aumentaNumeroIscritti() {
+		numIscritti++;
+	}
+	
+	public void diminuisciNumIscritti() {
+		numIscritti--;
 	}
 
 	@Override

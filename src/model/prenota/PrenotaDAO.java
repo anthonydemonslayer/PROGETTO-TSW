@@ -54,6 +54,13 @@ public class PrenotaDAO implements DAOInterface<PrenotaBean, Integer> {
 		return false;
 	}
 	
+	public void setPrenota(ResultSet resultSet, PrenotaBean prenota) throws SQLException {
+		prenota.setIdLezione(resultSet.getInt("idLezione"));
+		prenota.setIdUtente(resultSet.getInt("idUtente"));
+	}
 	
-	
+	public void setPrenotaStatement(PrenotaBean prenota, PreparedStatement preparedStatement) throws SQLException {
+		preparedStatement.setInt(1, prenota.getIdLezione());
+		preparedStatement.setInt(2, prenota.getIdUtente());
+	}
 }

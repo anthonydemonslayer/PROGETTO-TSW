@@ -52,5 +52,13 @@ public class IncludeDAO implements DAOInterface<IncludeBean, Integer> {
 		return false;
 	}
 	
+	private void setInclude(ResultSet resultSet, IncludeBean includeBean) throws SQLException {
+		includeBean.setIdAbbonamento(resultSet.getInt("id"));
+		includeBean.setNomeCorso(resultSet.getString("nomeCorso"));
+	}
 	
+	private void setIncludeStatement(IncludeBean includeBean, PreparedStatement preparedStatement) throws SQLException {
+		preparedStatement.setInt(1, includeBean.getIdAbbonamento());
+		preparedStatement.setString(2, includeBean.getNomeCorso());
+	}
 }
