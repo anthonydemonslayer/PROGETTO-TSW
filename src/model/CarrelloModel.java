@@ -41,22 +41,22 @@ public class CarrelloModel {
 		}
 	}
 		
-		public synchronized void setIscritti(int id, int numeroIscritti, float costo) {
-			for(LezioneBean l: carrello) {
-				if(l.getIdLezione() == id && l.getCosto() == costo) {
-					if(l.getNumIscritti() <=0 || numeroIscritti == 0)
-						carrello.remove(l);
-					else
-						l.setNumIscritti(numeroIscritti);
-					return;
-				}
+	public synchronized void setIscritti(int id, int numeroIscritti, float costo) {
+		for(LezioneBean l: carrello) {
+			if(l.getIdLezione() == id && l.getCosto() == costo) {
+				if(l.getNumIscritti() <=0 || numeroIscritti == 0)
+					carrello.remove(l);
+				else
+					l.setNumIscritti(numeroIscritti);
+				return;
 			}
 		}
+	}
 		
-		public synchronized void rimuovi(int id, float costo) {
-			carrello.removeIf(l -> l.getIdLezione() == id && 
-					l.getCosto() == costo);
+	public synchronized void rimuovi(int id, float costo) {
+		carrello.removeIf(l -> l.getIdLezione() == id && 
+			l.getCosto() == costo);
 			
-		}
+	}
 		
 }
