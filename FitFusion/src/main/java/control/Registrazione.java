@@ -38,6 +38,8 @@ public class Registrazione extends HttpServlet {
 				utente.setIndirizzo(email);
 
 				utenteDAO.doSave(utente);
+				utente = utenteDAO.doRetreiveByEmail(email);
+				
 				request.getSession().setAttribute("utente", utente);
 				response.sendRedirect("home.jsp");
 			}

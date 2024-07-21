@@ -131,7 +131,7 @@ public class CarrelloModel {
 		
 		prenotazioni.forEach((p) -> {
 			p.setIdUtente(utente.getIdUtente());
-
+			
 			try {
 				System.out.println("Salvo "+p.toString());
 				prenotaDAO.doSave(p);
