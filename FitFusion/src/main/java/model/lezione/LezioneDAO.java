@@ -6,8 +6,10 @@ import exception.GenericError;
 import model.DAOInterface;
 import java.sql.*;
 import java.sql.Date;
+import java.text.DateFormat;
 import java.util.*;
 import java.time.*;
+import java.time.format.DateTimeFormatter;
 
 public class LezioneDAO implements DAOInterface<LezioneBean, Integer> {
 	
@@ -112,8 +114,15 @@ public class LezioneDAO implements DAOInterface<LezioneBean, Integer> {
 		
 
 	@Override
-	public void doSave(LezioneBean product) throws SQLException {
-		
+	public void doSave(LezioneBean lezione) throws SQLException {
+		String query = "INSERT INTO " + TABLE_NAME + "(costo, dataOra, durata, idUtente, nomeCorso)" 
+				+ "VALUES (?, ?, ?, ?, ?)";
+		try (Connection connection = ds.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+			setLezioneStatement(lezione, preparedStatement);
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	@Override
@@ -126,6 +135,25 @@ public class LezioneDAO implements DAOInterface<LezioneBean, Integer> {
 		}
 	}
 
+	public Collection<LezioneBean> doRetrieveAllByPeriodo(LocalDate da, LocalDate a) throws SQLException {
+		Collection<LezioneBean> listaLezioni = new ArrayList<>();
+		String query = "SELECT * FROM " + TABLE_NAME + " WHERE dataOra BETWEEN ? AND ?;";
+		LezioneDAO lezioneDAO = new LezioneDAO();
+
+		try (Connection connection = ds.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+			preparedStatement.setString(1, da.format(DateTimeFormatter.ISO_DATE));
+			preparedStatement.setString(2, a.format(DateTimeFormatter.ISO_DATE));
+
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			while(resultSet.next()) {
+				LezioneBean lezione = lezioneDAO.doRetreiveByKey(resultSet.getInt("idLezione"));
+				listaLezioni.add(lezione);
+			}
+			return listaLezioni;
+		}
+	}
+	
 	@Override
 	public boolean doDelete(Integer code) throws SQLException {
 		// TODO Auto-generated method stub
@@ -145,12 +173,10 @@ public class LezioneDAO implements DAOInterface<LezioneBean, Integer> {
 	private void setLezioneStatement(LezioneBean lezione, PreparedStatement preparedStatement) 
 			throws SQLException {
 		preparedStatement.setFloat(1, lezione.getCosto());
-		preparedStatement.setDate(2, Date.valueOf(LocalDate.now()));
+		preparedStatement.setTimestamp(2, Timestamp.valueOf(lezione.getDataOra()));
 		preparedStatement.setInt(3, lezione.getDurata());
-		preparedStatement.setInt(4, lezione.getIdLezione());
-		preparedStatement.setInt(5, lezione.getIdUtente());
+		preparedStatement.setInt(4, lezione.getIdUtente());
 		preparedStatement.setString(5, lezione.getNomeCorso());
-		preparedStatement.setInt(6, lezione.getNumIscritti());
 	}
 
 }

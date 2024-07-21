@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -17,6 +18,8 @@ import javax.sql.DataSource;
 
 import exception.GenericError;
 import model.DAOInterface;
+import model.lezione.LezioneBean;
+import model.lezione.LezioneDAO;
 
 public class AbbonamentoDAO implements DAOInterface<AbbonamentoBean, Integer> {
 	
@@ -35,14 +38,15 @@ public class AbbonamentoDAO implements DAOInterface<AbbonamentoBean, Integer> {
 	}
 
 	@Override
-	public AbbonamentoBean doRetreiveByKey(Integer code) throws SQLException {
+	public AbbonamentoBean doRetreiveByKey(Integer idUtente) throws SQLException {
 		AbbonamentoBean abbonamentoBean = new AbbonamentoBean();
 		String query = "SELECT Abbonamento.* FROM " + TABLE_NAME + " NATURAL JOIN Utente WHERE idUtente = ?";
 		
-		try (Connection connection = ds.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-			preparedStatement.setInt(1, code);
+		try (Connection connection = ds.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, 
+			    ResultSet.CONCUR_READ_ONLY)) {
+			preparedStatement.setInt(1, idUtente);
 			ResultSet resultSet = preparedStatement.executeQuery();
-			if (resultSet.next()) {
+			if (resultSet.last()) {
 				setAbbonamento(resultSet, abbonamentoBean);
 				return abbonamentoBean;
 			} else {
@@ -69,6 +73,26 @@ public class AbbonamentoDAO implements DAOInterface<AbbonamentoBean, Integer> {
 		}
 	}
 
+	public Collection<AbbonamentoBean> doRetrieveAllByPeriodo(LocalDate da, LocalDate a) throws SQLException {
+		Collection<AbbonamentoBean> listaAbbonamenti = new ArrayList<>();
+		String query = "SELECT * FROM " + TABLE_NAME + " WHERE dataAcquisto BETWEEN ? AND ?;";
+		AbbonamentoDAO abbonamentoDAO = new AbbonamentoDAO();
+
+		try (Connection connection = ds.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+			preparedStatement.setString(1, da.format(DateTimeFormatter.ISO_DATE));
+			preparedStatement.setString(2, a.format(DateTimeFormatter.ISO_DATE));
+
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			while(resultSet.next()) {
+				AbbonamentoBean abbonamento = new AbbonamentoBean();
+				setAbbonamento(resultSet, abbonamento);
+				listaAbbonamenti.add(abbonamento);
+			}
+			return listaAbbonamenti;
+		}
+	}
+	
 	@Override
 	public void doSave(AbbonamentoBean abbonamentoBean) throws SQLException {
 		doSaveAndReturnId(abbonamentoBean);
@@ -124,8 +148,7 @@ public class AbbonamentoDAO implements DAOInterface<AbbonamentoBean, Integer> {
 		preparedStatement.setFloat(1, abbonamento.getCosto());
 		preparedStatement.setDate(2, Date.valueOf(LocalDate.now()));
 		preparedStatement.setInt(3, abbonamento.getDurata());
-		preparedStatement.setInt(4, abbonamento.getIdAbbonamento());
+		preparedStatement.setInt(4, abbonamento.getMaxAccessiSettimanali());
 		preparedStatement.setInt(5, abbonamento.getIdUtente());
-		preparedStatement.setInt(6, abbonamento.getMaxAccessiSettimanali());
 	}
 }

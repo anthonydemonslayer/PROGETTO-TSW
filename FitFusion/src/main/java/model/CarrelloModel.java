@@ -4,6 +4,7 @@ import exception.GenericError;
 import model.lezione.*;
 import model.prenota.PrenotaBean;
 import model.prenota.PrenotaDAO;
+import model.utente.UtenteBean;
 import model.abbonamento.*;
 import model.corso.CorsoBean;
 import model.corso.CorsoDAO;
@@ -21,6 +22,7 @@ public class CarrelloModel {
 	
 	public CarrelloModel() {
 		prenotazioni = new ArrayList<>();
+		include = new ArrayList<>();
 	}
 
 	public ArrayList<PrenotaBean> getCarrello() {
@@ -104,26 +106,34 @@ public class CarrelloModel {
 		}
 	}
 	
-	public synchronized void acquista() {
+	public synchronized void acquista(UtenteBean utente) {
 		PrenotaDAO prenotaDAO = new PrenotaDAO();
 		AbbonamentoDAO abbonamentoDAO = new AbbonamentoDAO();
 
-		try {
-			int id = abbonamentoDAO.doSaveAndReturnId(abbonamento);
-			IncludeDAO includeDAO = new IncludeDAO();
-			include.forEach((include) -> {
-				include.setIdAbbonamento(id);
-				try {
-					includeDAO.doSave(include);
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			});
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-		}
-		prenotazioni.forEach((p) -> {
+		if (abbonamento != null) {
+			abbonamento.setIdUtente(utente.getIdUtente());
 			try {
+				
+				int id = abbonamentoDAO.doSaveAndReturnId(abbonamento);
+				IncludeDAO includeDAO = new IncludeDAO();
+				include.forEach((include) -> {
+					include.setIdAbbonamento(id);
+					try {
+						includeDAO.doSave(include);
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				});
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		}
+		
+		prenotazioni.forEach((p) -> {
+			p.setIdUtente(utente.getIdUtente());
+
+			try {
+				System.out.println("Salvo "+p.toString());
 				prenotaDAO.doSave(p);
 			} catch (SQLException e) {
 				e.printStackTrace();

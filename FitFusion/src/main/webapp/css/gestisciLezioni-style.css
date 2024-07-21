@@ -10,7 +10,8 @@
 	min-width: 100%;
 }
 
-.pagina-gestisci-corsi > .forms {
+
+.pagina-gestisci-lezioni > .forms {
 	display: flex;
 	flex-direction: row;
 	gap: 100px;
@@ -20,7 +21,7 @@
 	min-width: 100%;
 }
 
-.pagina-gestisci-corsi > .forms > form {
+.pagina-gestisci-lezioni > .forms > form {
 	flex: 1 1 0;
 	width: 100%;
 	align-items: flex-start;

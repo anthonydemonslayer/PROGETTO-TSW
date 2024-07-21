@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -15,7 +16,7 @@ import javax.sql.DataSource;
 import model.DAOInterface;
 
 
-public class UtenteDAO implements DAOInterface<UtenteBean, String> {
+public class UtenteDAO implements DAOInterface<UtenteBean, Integer> {
 	
 	private static final String TABLE_NAME = "Utente";
 	private static final DataSource ds;
@@ -31,11 +32,68 @@ public class UtenteDAO implements DAOInterface<UtenteBean, String> {
 		}
 	}
 
-	@Override
-	public UtenteBean doRetreiveByKey(String email) throws SQLException {
+	public UtenteBean doRetreiveByEmail(String email) throws SQLException {
 		UtenteBean utenteBean = new UtenteBean();
 		String query = "SELECT * FROM " + TABLE_NAME + " WHERE indirizzo = ?";
-		return getUtenteBean(email, utenteBean, query);
+		try (Connection connection = ds.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+			preparedStatement.setString(1, email);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			if(!resultSet.next())
+				return null;
+				
+			setUtente(resultSet, utenteBean);
+			return utenteBean;
+		}
+	}
+
+	@Override
+	public UtenteBean doRetreiveByKey(Integer id) throws SQLException {
+		UtenteBean utenteBean = new UtenteBean();
+		String query = "SELECT * FROM " + TABLE_NAME + " WHERE idUtente = ?";
+		try (Connection connection = ds.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+			preparedStatement.setInt(1, id);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			if(!resultSet.next())
+				return null;
+				
+			setUtente(resultSet, utenteBean);
+			return utenteBean;
+		}
+	}
+	
+	public List<UtenteBean> doRetreiveAllByCognome(String cognome) throws SQLException {
+		List<UtenteBean> utenti = new ArrayList<>();
+		
+		String query = "SELECT * FROM " + TABLE_NAME + " WHERE cognome = ?";
+		try (Connection connection = ds.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+			preparedStatement.setString(1, cognome);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			while(resultSet.next()) {
+				UtenteBean utenteBean = new UtenteBean();
+				setUtente(resultSet, utenteBean);
+				utenti.add(utenteBean);
+			}
+			return utenti;
+		}
+	}
+	
+	public List<UtenteBean> doRetreiveAllIstruttori() throws SQLException {
+		List<UtenteBean> utenti = new ArrayList<>();
+		
+		String query = "SELECT * FROM " + TABLE_NAME + " WHERE tipoUtente = \"istruttore\"";
+		try (Connection connection = ds.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			while(resultSet.next()) {
+				UtenteBean utenteBean = new UtenteBean();
+				setUtente(resultSet, utenteBean);
+				utenti.add(utenteBean);
+			}
+			return utenti;
+		}
 	}
 
 	@Override
@@ -81,7 +139,6 @@ public class UtenteDAO implements DAOInterface<UtenteBean, String> {
 		}
 	}
 
-	@Override
 	public boolean doDelete(String email) throws SQLException {
 		int result;
 		String query = "DELETE FROM " + TABLE_NAME + " WHERE indirizzo = ?";
@@ -124,5 +181,10 @@ public class UtenteDAO implements DAOInterface<UtenteBean, String> {
 		preparedStatement.setString(5, utenteBean.getTelefono());
 		preparedStatement.setString(6, utenteBean.getTipoUtente().toString());
 		preparedStatement.setString(7, utenteBean.getIndirizzo());
+	}
+
+	@Override
+	public boolean doDelete(Integer code) throws SQLException {
+		return false;
 	}
 }

@@ -96,7 +96,7 @@ List<LezioneBean> lezioni = carrello.getLezioni();
 				<p class="titolo piccolo">PREZZO: <%= carrello.getPrezzo() %></p>
 				</div>
 				<span style="gap: 10px;">
-					<form action="/ProcessaCarrello" method="POST">
+					<form action="ProcessaCarrello" method="POST">
 					<button class="cta" id="acquistaBtn">ACQUISTA</button>
 					</form>
 					<button class="contieni-immagine" onclick="location.href='SvuotaCarrello';">

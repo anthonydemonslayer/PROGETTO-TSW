@@ -21,20 +21,15 @@ public class GlobalStylesheetFilter extends HttpFilter implements Filter {
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         String contextPath = request.getContextPath();
         String cssUrl = contextPath + "/css/global-style.css";
+        String css = "<link rel='stylesheet' type='text/css' href='"+cssUrl+"'>";
+        String js = "<script src='js/validateInput.js'></script>";
         
-        httpResponse.setHeader("Global-CSS", "<link rel='stylesheet' type='text/css' href='"+cssUrl+"'>");
+        httpResponse.setHeader("Global-CSS", css+js);
         chain.doFilter(request, response);
         
         UtenteDAO u = new UtenteDAO();
-        try {
-			//u.doRetriveAll("").stream().forEach((e) -> System.out.println(e.toString()));
-        	System.out.println(u.doRetreiveByKey("utente1@example.com").toString());
-        	System.out.println(request.getContextPath());
-        	System.out.println((new CorsoDAO()).doRetreiveByKey("Regolare").toString());
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+        //u.doRetriveAll("").stream().forEach((e) -> System.out.println(e.toString()));
+		System.out.println(request.getContextPath());
     }
 
     @Override

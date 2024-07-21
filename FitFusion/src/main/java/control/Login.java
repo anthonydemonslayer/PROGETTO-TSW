@@ -27,16 +27,14 @@ public class Login extends HttpServlet {
 				String redirectedPage;
 				int tipoUtente = checkUser(email, password);
 				UtenteDAO utenteDAO = new UtenteDAO();
-				UtenteBean utenteBean = utenteDAO.doRetreiveByKey(email);
+				UtenteBean utenteBean = utenteDAO.doRetreiveByEmail(email);
 				request.getSession().setAttribute("utente", utenteBean);
 								
 				switch (tipoUtente) {
 					case ADMIN:
-						request.getSession().setAttribute("tipoUtente", ADMIN);
 						redirectedPage = "home.jsp";
 						break;
 					case REGISTRATO:
-						request.getSession().setAttribute("tipoUtente", REGISTRATO);
 						redirectedPage = "home.jsp";
 						break;
 					default:
@@ -54,7 +52,7 @@ public class Login extends HttpServlet {
 		
 		private int checkUser(String email, String password) throws SQLException {
 			UtenteDAO utenteDAO = new UtenteDAO();
-			UtenteBean utenteBean = utenteDAO.doRetreiveByKey(email);
+			UtenteBean utenteBean = utenteDAO.doRetreiveByEmail(email);
 			
 			if(utenteBean == null || !(utenteBean.getPassword().equals(password)))
 				return -1;

@@ -27,6 +27,9 @@
 	align-items: flex-start;
 }
 
+.card.prenotazione {
+	max-width: 100%;
+}
 
 
 /*******************/

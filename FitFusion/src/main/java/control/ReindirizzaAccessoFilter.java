@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.utente.UtenteBean;
 
 
-@WebFilter(urlPatterns = {"/dashboardUtente.jsp", "/carrello.jsp"}, dispatcherTypes = {DispatcherType.REQUEST, DispatcherType.FORWARD})
+@WebFilter(urlPatterns = {"/dashboardUtente.jsp", "/ProcessaCarrello"}, dispatcherTypes = {DispatcherType.REQUEST, DispatcherType.FORWARD})
 public class ReindirizzaAccessoFilter extends HttpFilter implements Filter {
        
     /**

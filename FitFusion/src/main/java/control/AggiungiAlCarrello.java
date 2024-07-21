@@ -38,9 +38,8 @@ public class AggiungiAlCarrello extends HttpServlet {
 		LezioneDAO lezioneDAO = new LezioneDAO();
 		CarrelloModel carrello = (CarrelloModel) request.getSession().getAttribute("carrello");
 		if (carrello == null) carrello = new CarrelloModel();
-		UtenteBean utente = (UtenteBean) request.getSession().getAttribute("utente");
 		
-		if (utente != null) {
+		if (true) {
 			if (abb != null) {
 				carrello.setAbbonamento(abb);
 				carrello.setCorsi((ArrayList<IncludeBean>) request.getAttribute("corsiAbbonamento"));
@@ -50,9 +49,8 @@ public class AggiungiAlCarrello extends HttpServlet {
 				for (String s : lezioniId) {
 					try {
 						Integer lezioneID = Integer.decode(s);
-						Integer utenteID = utente.getIdUtente();
 						PrenotaBean p = new PrenotaBean();
-						p.setIdLezione(lezioneID);  p.setIdUtente(utenteID);
+						p.setIdLezione(lezioneID);  p.setIdUtente(-1);
 		
 						carrello.addPrenotazione(p);
 					} catch (NumberFormatException e) {

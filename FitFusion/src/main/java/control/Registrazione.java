@@ -26,7 +26,7 @@ public class Registrazione extends HttpServlet {
 		UtenteDAO utenteDAO = new UtenteDAO();
 		
 		try {
-			if(utenteDAO.doRetreiveByKey(email) != null) {
+			if(utenteDAO.doRetreiveByEmail(email) != null) {
 				response.sendRedirect("accesso.jsp");
 			} else {
 				UtenteBean utente = new UtenteBean();

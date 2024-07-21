@@ -67,14 +67,35 @@ public class CorsoDAO implements DAOInterface<CorsoBean, String> {
 	}
 
 	@Override
-	public void doSave(CorsoBean product) throws SQLException {
-		
+	public void doSave(CorsoBean corso) throws SQLException {
+		String query = "INSERT INTO " + TABLE_NAME + "(descrizione, nomeCorso)" 
+				+ "VALUES (?, ?)";
+		try (Connection connection = ds.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+			setCorsoStatement(corso, preparedStatement);
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
-	@Override
-	public void doUpdate(CorsoBean product) throws SQLException {
-		
+	public void doUpdateAndRename(CorsoBean corso, String certoNomeCorso) throws SQLException {
+	    String query = "UPDATE " + TABLE_NAME + " SET nomeCorso = ?, descrizione = ? WHERE nomeCorso = ?";
+	    
+	    try (Connection connection = ds.getConnection();
+	         PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+	        
+	        preparedStatement.setString(1, corso.getNomeCorso());
+	        preparedStatement.setString(2, corso.getDescrizione());
+	        preparedStatement.setString(3, certoNomeCorso);
+	        
+	        int rowsAffected = preparedStatement.executeUpdate();
+	        
+	        if (rowsAffected == 0) {
+	            throw new SQLException("Update failed, no rows affected.");
+	        }
+	    }
 	}
+
 
 	@Override
 	public boolean doDelete(String code) throws SQLException {
@@ -89,5 +110,11 @@ public class CorsoDAO implements DAOInterface<CorsoBean, String> {
 	private void setCorsoStatement(CorsoBean corso, PreparedStatement preparedStatement) throws SQLException {
 		preparedStatement.setString(1, corso.getDescrizione());
 		preparedStatement.setString(2, corso.getNomeCorso());
+	}
+
+	@Override
+	public void doUpdate(CorsoBean product) throws SQLException {
+		// TODO Auto-generated method stub
+		
 	}
 }

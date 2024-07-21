@@ -8,7 +8,7 @@ public class LezioneBean {
 	
 	int idLezione;
 	float costo;
-	LocalDateTime dataOra;
+	LocalDateTime dataOra = LocalDateTime.now();
 	int durata;
 	int numIscritti;
 	int idUtente;

@@ -6,6 +6,7 @@
 		<meta charset="UTF-8"/>
 		<title>Gestisci Utenti</title>
 		<link rel='stylesheet' type='text/css' href='css/gestisciUtenti-style.css'>
+		<script src="js/gestisciUtenti.js" defer></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	</head>
 
@@ -17,16 +18,23 @@
 		<div class="pagina-gestisci-utenti">
 			<%@ include file="navbarAdmin.jsp" %>
 		
+			<div class="textbox">
+				<p>Cognome Utente</p>
+				<span>
+					<input type="text" id="cognome" name="cognome" required autofocus></input>
+					<button type="button" id="cerca" class="primario" onclick="cercaUtenti()">CERCA</button>
+				</span>
+			</div>
 			<div class="utente">
 				<div class="custom-select">
-					<select>
-						<option>Giovanni Brancaccio</option>
-						<option>Mario Rossi</option>
-						<option>...</option>
+					<select id="utenti">
 					</select>
 				</div>
-				<div class="custom-select">
-					<select>
+				
+				<input type="hidden" name="utenteID" id="utenteID" value=""/>
+				
+				<div class="custom-select" hidden=true>
+					<select id="tipoUtente">
 						<option>Utente</option>
 						<option>Istruttore</option>
 						<option>Amministratore</option>

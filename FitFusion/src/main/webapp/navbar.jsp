@@ -1,4 +1,4 @@
-<%@ page import="utils.UserUtils" %>
+<%@ page import="utils.*" %>
 <%@ page import="model.utente.*" %>
 
 <% UtenteBean utente = (UtenteBean) request.getSession().getAttribute("utente"); %>

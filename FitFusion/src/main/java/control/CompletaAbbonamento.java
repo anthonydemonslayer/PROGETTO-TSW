@@ -34,21 +34,17 @@ public class CompletaAbbonamento extends HttpServlet {
 
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {			
-		UtenteBean utente = (UtenteBean) request.getSession().getAttribute("utente");
-		
-		if (utente != null) {
+		if (true) {
 			String[] corsi = (String[]) request.getSession().getAttribute("corsi");
 			int costo = Integer.decode(request.getParameter("costo"));
 			LocalDate dataAcquisto = LocalDate.now();
 			int durata = Integer.decode(request.getParameter("durata"));
 			int maxAccessiSettimanali = Integer.decode(request.getParameter("maxAccessiSettimanali"));
-			int idUtente = utente.getIdUtente();
 			
 			AbbonamentoBean abb = new AbbonamentoBean();
 			abb.setCosto(costo);
 			abb.setDataAcquisto(dataAcquisto);
 			abb.setDurata(durata);
-			abb.setIdUtente(idUtente);
 			abb.setMaxAccessiSettimanali(maxAccessiSettimanali);
 	
 			request.setAttribute("abbonamento", abb);

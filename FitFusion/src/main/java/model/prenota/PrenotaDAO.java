@@ -49,8 +49,8 @@ public class PrenotaDAO implements DAOInterface<PrenotaBean, Integer> {
 			}
 			return listaLezioni;
 		}
-
 	}
+
 	
 	@Override
 	public Collection<PrenotaBean> doRetriveAll(String order) throws SQLException {
@@ -60,8 +60,14 @@ public class PrenotaDAO implements DAOInterface<PrenotaBean, Integer> {
 
 	@Override
 	public void doSave(PrenotaBean product) throws SQLException {
-		// TODO Auto-generated method stub
-		
+		String query = "INSERT INTO " + TABLE_NAME + " (idLezione, idUtente) "
+				+ "VALUES (?, ?)";
+
+		try (Connection connection = ds.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+			setPrenotaStatement(product, preparedStatement);
+			preparedStatement.executeUpdate();
+		}
 	}
 
 	@Override

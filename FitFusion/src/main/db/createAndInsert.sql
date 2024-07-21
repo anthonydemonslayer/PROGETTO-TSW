@@ -36,7 +36,7 @@ CREATE TABLE Lezione (
 	idUtente INT NOT NULL,
 	nomeCorso VARCHAR(50) NOT NULL,
 	FOREIGN KEY (idUtente) REFERENCES Utente(idUtente),
-	FOREIGN KEY (nomeCorso) REFERENCES Corso(nomeCorso)
+	FOREIGN KEY (nomeCorso) REFERENCES Corso(nomeCorso) ON UPDATE CASCADE 
 );
 
 DROP TABLE IF EXISTS Prenota;
@@ -68,7 +68,7 @@ CREATE TABLE Include (
     nomeCorso VARCHAR(255) NOT NULL,
     PRIMARY KEY (idAbbonamento, nomeCorso),
     FOREIGN KEY (idAbbonamento) REFERENCES Abbonamento(idAbbonamento),
-    FOREIGN KEY (nomeCorso) REFERENCES Corso(nomeCorso)
+    FOREIGN KEY (nomeCorso) REFERENCES Corso(nomeCorso) ON UPDATE CASCADE 
 );
 
 #
@@ -102,6 +102,8 @@ DELIMITER ;
 
 INSERT INTO Utente (nomeUtente, cognome, telefono, password, indirizzo) VALUES 
 	('Utente1', 'Cognome1', '1234567890', 'password1', 'utente1@example.com'),
+    ('Utente1_', 'Cognome1', '1234567890', 'password1', 'utente1_@example.com'),
+    ('Utente1__', 'Cognome1', '1234567890', 'password1', 'utente1__@example.com'),
     ('Utente3', 'Cognome3', '2345678901', 'password3', 'utente3@example.com'),
     ('Utente5', 'Cognome5', '4567890123', 'password5', 'utente5@example.com'),
     ('Utente7', 'Cognome7', '6789012345', 'password7', 'utente7@example.com'),
