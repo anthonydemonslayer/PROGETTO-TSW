@@ -1,15 +1,17 @@
 package model.prenota;
 
-import java.sql.SQLException;
-import java.util.Collection;
-
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
-
+import javax.naming.*;
+import javax.sql.*;
 import exception.GenericError;
 import model.DAOInterface;
+import model.corso.CorsoBean;
+import model.corso.CorsoDAO;
+import model.lezione.LezioneBean;
+import model.lezione.LezioneDAO;
+
+import java.sql.*;
+import java.util.*;
+import java.time.*;
 
 public class PrenotaDAO implements DAOInterface<PrenotaBean, Integer> {
 	
@@ -28,11 +30,28 @@ public class PrenotaDAO implements DAOInterface<PrenotaBean, Integer> {
 	}
 
 	@Override
-	public PrenotaBean doRetreiveByKey(Integer code) throws SQLException {
-		// TODO Auto-generated method stub
+	public PrenotaBean doRetreiveByKey(Integer id) throws SQLException {
 		return null;
 	}
 
+	public Collection<LezioneBean> doRetrieveAllByUserId(Integer idUtente) throws SQLException {
+		Collection<LezioneBean> listaLezioni = new ArrayList<>();
+		String query = "SELECT * FROM " + TABLE_NAME + " WHERE idUtente = ?";
+		LezioneDAO lezioneDAO = new LezioneDAO();
+
+		try (Connection connection = ds.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+			preparedStatement.setInt(1, idUtente);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			while(resultSet.next()) {
+				LezioneBean lezione = lezioneDAO.doRetreiveByKey(resultSet.getInt("idLezione"));
+				listaLezioni.add(lezione);
+			}
+			return listaLezioni;
+		}
+
+	}
+	
 	@Override
 	public Collection<PrenotaBean> doRetriveAll(String order) throws SQLException {
 		// TODO Auto-generated method stub
@@ -46,9 +65,14 @@ public class PrenotaDAO implements DAOInterface<PrenotaBean, Integer> {
 	}
 
 	@Override
-	public void doUpdate(PrenotaBean product) throws SQLException {
-		// TODO Auto-generated method stub
+	public void doUpdate(PrenotaBean prenotazione) throws SQLException {
+		String query = "UPDATE " + TABLE_NAME + "SET idLezione = ?, idUtente = ? ";
 		
+		try (Connection connection = ds.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+			preparedStatement.setInt(1, prenotazione.getIdLezione());
+			preparedStatement.setInt(2, prenotazione.getIdUtente());
+			preparedStatement.executeUpdate();
+		}		
 	}
 
 	@Override
@@ -57,6 +81,13 @@ public class PrenotaDAO implements DAOInterface<PrenotaBean, Integer> {
 		return false;
 	}
 	
+	public void setPrenota(ResultSet resultSet, PrenotaBean prenota) throws SQLException {
+		prenota.setIdLezione(resultSet.getInt("idLezione"));
+		prenota.setIdUtente(resultSet.getInt("idUtente"));
+	}
 	
-	
+	public void setPrenotaStatement(PrenotaBean prenota, PreparedStatement preparedStatement) throws SQLException {
+		preparedStatement.setInt(1, prenota.getIdLezione());
+		preparedStatement.setInt(2, prenota.getIdUtente());
+	}
 }

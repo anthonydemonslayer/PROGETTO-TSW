@@ -8,6 +8,8 @@
 		<%= response.getHeader("Global-CSS") %>
 		<link rel='stylesheet' type='text/css' href='css/completaAbbonamento-style.css'>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<script src="js/completaAbbonamento.js" defer></script>
+		
 	</head>
 
 	<body>	
@@ -15,46 +17,53 @@
 		
 		<spacer></spacer>
 
-		<div class="pagina-completa-abbonamento">
-			<p class="titolo grande">COMPLETA ABBONAMENTO</p>
-			
-			<div class="attributi">
-				<div class="attributo">
-					<p><bold>Durata</bold></p>
-					<div class="custom-select">
-						<select>
-							<option>1 mese</option>
-							<option>3 mesi</option>
-							<option>6 mesi</option>
-							<option>12 mesi</option>
-						</select>
+		<form action="CompletaAbbonamento" method="POST" id="completaForm" style="">
+			<div class="pagina-completa-abbonamento">
+				<p class="titolo grande">COMPLETA ABBONAMENTO</p>
+				
+				<div class="attributi">
+					<div class="attributo">
+						<p><bold>Durata in mesi</bold></p>
+						<div class="custom-select">
+							<select name="durata" id="durata">
+								<option>1</option>
+								<option>3</option>
+								<option>6</option>
+								<option>12</option>
+							</select>
+						</div>
+					</div>
+					
+					<div class="attributo">
+						<p><bold>Max Accessi Settimanali</bold></p>
+						<div class="custom-select">
+							<select name="maxAccessiSettimanali" id="maxAccessiSettimanali">
+								<option>3</option>
+								<option>5</option>
+							</select>
+						</div>
+					</div>
+					
+					<div class="attributo">
+						<p><bold>Corsi Scelti</bold></p>
+						<%
+						String[] corsi = request.getParameterValues("corsi");
+						%>
+						<p id="corsi-selezionati" value="<%= corsi.length %>">
+							<% for (String c : corsi) { %>
+								<%= c %> <br/>
+							<% } %>
+						</p>
 					</div>
 				</div>
+			</div>		
 				
-				<div class="attributo">
-					<p><bold>Max Accessi Settimanali</bold></p>
-					<div class="custom-select">
-						<select>
-							<option>3</option>
-							<option>5</option>
-						</select>
-					</div>
-				</div>
-				
-				<div class="attributo">
-					<p><bold>Corsi Scelti</bold></p>
-					<p>
-						Yoga <br/>
-						Regolare <br/>
-						Pilates <br/>
-					</p>
-				</div>
-			</div>
-			
 			<span style="justify-content: center; gap: 30px;">
-				<p class="paragrafo grande"><bold>Prezzo: $50</bold></p>
-				<button class="cta">METTI NEL CARRELLO</button>
+				<p class="paragrafo grande"><bold id="prezzo">Prezzo: $50</bold></p>
+				<button type="submit" class="cta">METTI NEL CARRELLO</button>
 			</span>
-		
+			
+			<input type="hidden" name="costo" id="costoRaw" value="50">
+		</form>
 	</body>
 </html>

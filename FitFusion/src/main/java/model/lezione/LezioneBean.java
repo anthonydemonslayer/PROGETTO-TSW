@@ -1,5 +1,7 @@
 package model.lezione;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class LezioneBean {
@@ -10,19 +12,7 @@ public class LezioneBean {
 	int durata;
 	int numIscritti;
 	int idUtente;
-	int nomeCorso;
-	
-	public LezioneBean(int idLezione, float costo, LocalDateTime dataOra, int durata, int numIscritti, int idUtente,
-			int nomeCorso) {
-		super();
-		this.idLezione = idLezione;
-		this.costo = costo;
-		this.dataOra = dataOra;
-		this.durata = durata;
-		this.numIscritti = numIscritti;
-		this.idUtente = idUtente;
-		this.nomeCorso = nomeCorso;
-	}
+	String nomeCorso;
 	
 	public int getIdLezione() {
 		return idLezione;
@@ -39,8 +29,8 @@ public class LezioneBean {
 	public LocalDateTime getDataOra() {
 		return dataOra;
 	}
-	public void setDataOra(LocalDateTime dataOra) {
-		this.dataOra = dataOra;
+	public void setDataOra(LocalDateTime data) {
+		this.dataOra = data;
 	}
 	public int getDurata() {
 		return durata;
@@ -60,11 +50,19 @@ public class LezioneBean {
 	public void setIdUtente(int idUtente) {
 		this.idUtente = idUtente;
 	}
-	public int getNomeCorso() {
+	public String getNomeCorso() {
 		return nomeCorso;
 	}
-	public void setNomeCorso(int nomeCorso) {
+	public void setNomeCorso(String nomeCorso) {
 		this.nomeCorso = nomeCorso;
+	}
+	
+	public void aumentaNumeroIscritti() {
+		numIscritti++;
+	}
+	
+	public void diminuisciNumIscritti() {
+		numIscritti--;
 	}
 
 	@Override
@@ -72,7 +70,4 @@ public class LezioneBean {
 		return "LezioneBean [idLezione=" + idLezione + ", costo=" + costo + ", dataOra=" + dataOra + ", durata="
 				+ durata + ", numIscritti=" + numIscritti + ", idUtente=" + idUtente + ", nomeCorso=" + nomeCorso + "]";
 	}
-	
-	
-
 }

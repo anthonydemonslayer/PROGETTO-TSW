@@ -102,4 +102,8 @@ separator {
 		justify-content: space-around;
 		gap: 22px;
 	}
+	
+	.contieni-immagine.vuoto {
+	  transform: scale(80%) !important;
+	 }
 }

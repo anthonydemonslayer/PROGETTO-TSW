@@ -6,10 +6,10 @@
 
 <spacer></spacer>
 
-<div class="corsi">
+<form action="CreaAbbonamento" method="POST" class="corsi">
 	<span style="justify-content: flex-start; gap: 20px;">
 		<p class="titolo grande">Corsi</p>
-		<button id="creaAbbonamento" disabled class="cta">CREA ABBONAMENTO</button>
+		<button type="submit" id="creaAbbonamento" disabled class="cta">CREA ABBONAMENTO</button>
 	</span>
 	
 	<p class="paragrafo grande">Spunta i corsi che vuoi includere nell&rsquo;abbonamento, o clicca su &ldquo;Dettagli&rdquo; per prenotare le singole lezioni.</p>
@@ -27,9 +27,9 @@
 			<p class="titolo piccolo"><%= nome %></p>
 			<p class="descrizione"><%= corso.getDescrizione() %></p>
 			<span>
-				<button class="primario" style="min-width: 75%;" onclick="location.href='dettagliCorso.jsp?corso=<%= nome %>';"> Dettagli </button>
+				<button type="button" class="primario" style="min-width: 75%;" onclick="location.href='dettagliCorso.jsp?corso=<%= nome %>';"> Dettagli </button>
 				<div class="checkbox-wrapper">
-					<label> <input type="checkbox" name="corsiSelezionati"/> <span class="checkbox"></span> </label>
+					<label> <input type="checkbox" class="check" name="corsi" value="<%= nome %>"/> <span class="checkbox"></span> </label>
 				</div>
 			</span>
 		</div>
@@ -37,4 +37,4 @@
         }}
 	    %>
 	</div>
-</div>
+</form>

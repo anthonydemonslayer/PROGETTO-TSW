@@ -1,15 +1,15 @@
 package model.include;
 
-import java.sql.SQLException;
-import java.util.Collection;
-
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
-
+import javax.naming.*;
+import javax.sql.*;
 import exception.GenericError;
 import model.DAOInterface;
+import model.corso.CorsoBean;
+import model.corso.CorsoDAO;
+import model.lezione.LezioneBean;
+
+import java.sql.*;
+import java.util.*;
 
 public class IncludeDAO implements DAOInterface<IncludeBean, Integer> {
 	private static final String TABLE_NAME = "Include";
@@ -27,8 +27,7 @@ public class IncludeDAO implements DAOInterface<IncludeBean, Integer> {
 	}
 
 	@Override
-	public IncludeBean doRetreiveByKey(Integer code) throws SQLException {
-		// TODO Auto-generated method stub
+	public IncludeBean doRetreiveByKey(Integer idAb) throws SQLException {
 		return null;
 	}
 
@@ -37,10 +36,37 @@ public class IncludeDAO implements DAOInterface<IncludeBean, Integer> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public Collection<CorsoBean> doRetrieveAllByAbbonamentoId(Integer id) throws SQLException {
+		Collection<CorsoBean> listaCorsi = new ArrayList<>();
+		String query = "SELECT * FROM " + TABLE_NAME + " WHERE idAbbonamento = ?";
+		CorsoDAO corsoDAO = new CorsoDAO();
+		
+		try (Connection connection = ds.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+			preparedStatement.setInt(1, id);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			while(resultSet.next()) {
+				CorsoBean corso = corsoDAO.doRetreiveByKey(resultSet.getString("nomeCorso"));
+				
+				listaCorsi.add(corso);
+			}
+			return listaCorsi;
+		}
+
+	}
 
 	@Override
-	public void doSave(IncludeBean product) throws SQLException {
-		// TODO Auto-generated method stub
+	public void doSave(IncludeBean corsoAbbonamento) throws SQLException {
+		String query = "INSERT INTO " + TABLE_NAME + "(idAbbonamento, nomeCorso)" 
+				+ "VALUES (?, ?)";
+		try (Connection connection = ds.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+			preparedStatement.setInt(1, corsoAbbonamento.getIdAbbonamento());
+			preparedStatement.setString(2, corsoAbbonamento.getNomeCorso());
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 		
 	}
 
@@ -56,5 +82,13 @@ public class IncludeDAO implements DAOInterface<IncludeBean, Integer> {
 		return false;
 	}
 	
+	private void setInclude(ResultSet resultSet, IncludeBean includeBean) throws SQLException {
+		includeBean.setIdAbbonamento(resultSet.getInt("id"));
+		includeBean.setNomeCorso(resultSet.getString("nomeCorso"));
+	}
 	
+	private void setIncludeStatement(IncludeBean includeBean, PreparedStatement preparedStatement) throws SQLException {
+		preparedStatement.setInt(1, includeBean.getIdAbbonamento());
+		preparedStatement.setString(2, includeBean.getNomeCorso());
+	}
 }

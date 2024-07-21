@@ -8,7 +8,7 @@ public class UtenteBean {
 	private String cognome;
 	private String password;
 	private String telefono;
-	private TipoUtente tipoUtente;
+	private TipoUtente tipoUtente = TipoUtente.Utente;
 	
 
 	public int getIdUtente() {

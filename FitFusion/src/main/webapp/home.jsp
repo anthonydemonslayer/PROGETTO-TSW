@@ -27,7 +27,7 @@
 					<p>331 221 4353</p> 
 				</span>
 				
-				<button class="cta" onClick="document.getElementById('corsi').scrollIntoView();" >VAI AI CORSI</button>
+				<button type="button" class="cta" onClick="document.getElementById('corsi').scrollIntoView();" >VAI AI CORSI</button>
 			</div>
 			
 			<img alt="" src="images/palestrato.png"/>

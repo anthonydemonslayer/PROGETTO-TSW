@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -70,14 +71,32 @@ public class AbbonamentoDAO implements DAOInterface<AbbonamentoBean, Integer> {
 
 	@Override
 	public void doSave(AbbonamentoBean abbonamentoBean) throws SQLException {
-		String query = "INSERT INTO " + TABLE_NAME + " (costo, dataAcquisto, durata, maxAccessiSettimanali, idUtente) " 
-				+ "VALUES (?, ?, ?, ?, ?)";
-		try (Connection connection = ds.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-			setAbbonamentoStatement(abbonamentoBean, preparedStatement);
-			preparedStatement.executeUpdate();
-		}
+		doSaveAndReturnId(abbonamentoBean);
 	}
 	
+	public int doSaveAndReturnId(AbbonamentoBean abbonamentoBean) throws SQLException {
+		String query = "INSERT INTO " + TABLE_NAME + " (costo, dataAcquisto, durata, maxAccessiSettimanali, idUtente) "
+				+ "VALUES (?, ?, ?, ?, ?)";
+		int generatedId = -1;
+
+		try (Connection connection = ds.getConnection();
+				PreparedStatement preparedStatement = connection.prepareStatement(query,
+						Statement.RETURN_GENERATED_KEYS)) {
+
+			setAbbonamentoStatement(abbonamentoBean, preparedStatement);
+			int affectedRows = preparedStatement.executeUpdate();
+
+			if (affectedRows > 0) {
+				try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+					if (generatedKeys.next()) {
+						generatedId = generatedKeys.getInt(1);
+					}
+				}
+			}
+			
+			return generatedId;
+		}
+	}
 	
 
 	@Override

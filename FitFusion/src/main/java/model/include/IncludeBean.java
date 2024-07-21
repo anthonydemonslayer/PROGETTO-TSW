@@ -6,10 +6,8 @@ public class IncludeBean {
 	String nomeCorso;
 	
 	
-	public IncludeBean(int idAbbonamento, String nomeCorso) {
+	public IncludeBean() {
 		super();
-		this.idAbbonamento = idAbbonamento;
-		this.nomeCorso = nomeCorso;
 	}
 	
 	public int getIdAbbonamento() {

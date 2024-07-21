@@ -19,49 +19,6 @@
 			
 			<div class="forms">
 				<form action="/autenticazione" method="post">
-					<p class="titolo grande">MODIFICA LEZIONE</p>
-				
-					<div class="custom-select">
-						<select id="lezione">
-							<option>6/01/2025, Yoga, 7:30</option>
-							<option>6/02/2025, Pilates, 5:30</option>
-							<option>...</option>
-						</select>
-					</div>
-					
-					<div class="textbox">
-						<p>Orario</p>
-						<div class="datetime-wrapper">
-							<input type="datetime-local" id="orario" required></input>
-						</div>
-					</div>
-					
-					<div class="textbox">
-						<p>Corso</p>
-						<div class="custom-select">
-							<select id="corso">
-								<option>Yoga</option>
-								<option>Pilates</option>
-								<option>...</option>
-							</select>
-						</div>
-					</div>
-					
-					<div class="textbox">
-						<p>Istruttore</p>
-						<div class="custom-select">
-							<select id="istruttore">
-								<option>Mariasofia Rossonissima</option>
-								<option>Giovanni Brancaccio</option>
-								<option>...</option>
-							</select>
-						</div>
-					</div>
-					
-					<button type="submit" class="primario">APPLICA MODIFICHE</button>
-				</form>
-				
-				<form action="/autenticazione" method="post">
 					<p class="titolo grande">AGGIUNGI LEZIONE</p>
 				
 					<div class="textbox">

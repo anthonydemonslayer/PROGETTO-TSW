@@ -4,6 +4,7 @@
 <% UtenteBean utente = (UtenteBean) request.getSession().getAttribute("utente"); %>
 
 <link rel="stylesheet" type="text/css" href="/FitFusion/css/navbar-style.css">
+<script src="js/corsi.js" defer></script>
 
 <nav class="navbar">
     <a href="home.jsp" class="titolo piccolo">FIT FUSION</a>

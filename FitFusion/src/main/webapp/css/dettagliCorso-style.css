@@ -54,6 +54,9 @@
 
 .card.prenotazione {
 	gap: 10px;
+	padding: 30 px;
+	margin-right: none;
+	max-width: 100%;
 }
 
 

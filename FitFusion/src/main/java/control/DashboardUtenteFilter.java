@@ -16,32 +16,31 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.abbonamento.*;
 import model.corso.CorsoDAO;
-import model.lezione.LezioneDAO;
+import model.lezione.LezioneBean;
+import model.prenota.PrenotaDAO;
+import model.utente.UtenteBean;
 
 
 
-@WebFilter("/dettagliCorso.jsp")
-public class DettagliCorsoFilter extends HttpFilter implements Filter {
+@WebFilter("/dashboardUtente.jsp")
+public class DashboardUtenteFilter extends HttpFilter implements Filter {
 	private static final long serialVersionUID = 1L;
        
-	private CorsoDAO corsoDAO;
 
     public void init(FilterConfig filterConfig) throws ServletException {
-        corsoDAO = new CorsoDAO(); // Inizializza il DAO
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
     public void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException{
     	try {
-    		String corso = (String) request.getParameter("corso");
-
-    		if (corso != null) {
-		        request.setAttribute("corso", corsoDAO.doRetreiveByKey(corso));
-		        LezioneDAO lezioneDAO = new LezioneDAO();
-		        request.setAttribute("lezioni", lezioneDAO.doRetrieveAllByNomeCorso(corso));
+    		UtenteBean utente = (UtenteBean) request.getSession().getAttribute("utente");
+    		if (utente != null) {
+				AbbonamentoBean abb = (new AbbonamentoDAO()).doRetreiveByKey(utente.getIdUtente());
+				List<LezioneBean> lezionePrenotate = (List<LezioneBean>) (new PrenotaDAO()).doRetrieveAllByUserId(utente.getIdUtente());
+				
+		        request.setAttribute("abbonamento", abb);
+	    		request.setAttribute("lezioniPrenotate", lezionePrenotate);
     		}
 	        chain.doFilter(request, response); // Continua la catena di filtri
 		} catch (SQLException e) {

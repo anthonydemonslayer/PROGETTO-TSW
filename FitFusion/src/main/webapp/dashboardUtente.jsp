@@ -1,5 +1,8 @@
 <%@page import="model.abbonamento.*"%>
 <%@ page import="model.utente.*" %>
+<%@ page import="model.prenota.*" %>
+<%@ page import="model.lezione.*" %>
+<%@ page import="java.util.List" %>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
@@ -48,7 +51,7 @@
 				</div>
 				
 				<%
-				AbbonamentoBean abb = (new AbbonamentoDAO()).doRetreiveByKey(utente_.getIdUtente());
+				AbbonamentoBean abb = (AbbonamentoBean) request.getAttribute("abbonamento");
 				if (abb != null) {
 				%>
 				<div>
@@ -60,34 +63,25 @@
 						<bold>Costo:</bold> $<%= abb.getCosto() %> <br/>
 					</p>
 				</div>
+				<% } %>
 			</div>
-			<% } %>
 			
 			<div class="lezioni-prenotate">
 				<p class="titolo piccolo">LEZIONI PRENOTATE</p>
 				<div class="card-grid">
+					<% 
+				    List<LezioneBean> lezioni = (List<LezioneBean>)request.getAttribute("lezioniPrenotate");
+				    if(lezioni != null && !lezioni.isEmpty()) {
+			        for(LezioneBean lezione : lezioni) {
+				    %>
 					<div class="card prenotazione">
-						<p class="titolo piccolo" style="min-width: 65%;">1 GEN</p>
-						<p><bold>Orario:</bold> 19.30 - 20.30</p>
-						<p><bold>Tenuta da:</bold> 19.30 - 20.30</p>
-						<p><bold>Iscritti:</bold> 19.30 - 20.30</p>
+						<p class="titolo piccolo" style="min-width: 65%;"> <%= lezione.getDataOra().getDayOfMonth() +" "+ lezione.getDataOra().getMonth().toString() %></p>
+						<p><bold>Orario:</bold> <%= lezione.getDataOra().toLocalTime().toString() %> - <%= lezione.getDataOra().plusMinutes(lezione.getDurata()).toLocalTime().toString() %> </p>
+						<p><bold>Iscritti:</bold> <%= lezione.getNumIscritti() %> </p>
 					</div>
-					
-					<div class="card prenotazione">
-						<span>
-							<p class="titolo piccolo" style="min-width: 65%;">2 GEN</p>
-						</span>
-						<p><bold>Orario:</bold> 19.30 - 20.30</p>
-						<p><bold>Tenuta da:</bold> 19.30 - 20.30</p>
-						<p><bold>Iscritti:</bold> 19.30 - 20.30</p>
-					</div>
-					
-					<div class="card prenotazione">
-						<p class="titolo piccolo" style="min-width: 65%;">3 GEN</p>
-						<p><bold>Orario:</bold> 19.30 - 20.30</p>
-						<p><bold>Tenuta da:</bold> 19.30 - 20.30</p>
-						<p><bold>Iscritti:</bold> 19.30 - 20.30</p>
-					</div>
+					<%
+			        }}
+				    %>
 				</div>
 			</div>
 		</div>

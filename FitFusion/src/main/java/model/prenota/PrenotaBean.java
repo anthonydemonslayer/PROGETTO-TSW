@@ -1,7 +1,9 @@
 package model.prenota;
 
-public class PrenotaBean {
+import java.io.Serializable;
 
+public class PrenotaBean implements Serializable{
+	private static final long serialVersionUID = 1L;
 	int idUtente;
 	int idLezione;
 	
@@ -22,7 +24,4 @@ public class PrenotaBean {
 	public String toString() {
 		return "PrenotaBean [idUtente=" + idUtente + ", idLezione=" + idLezione + "]";
 	}
-	
-	
-	
 }

@@ -14,15 +14,8 @@ CREATE TABLE Utente (
     cognome VARCHAR(30) NOT NULL,
     telefono VARCHAR(25),
     password VARCHAR(128) NOT NULL,
-    tipoUtente VARCHAR(50) DEFAULT "utente"
-);
-
-DROP TABLE IF EXISTS Email;
-
-CREATE TABLE Email (
-	indirizzo VARCHAR(50) PRIMARY KEY,
-	idUtente INT NOT NULL,
-	FOREIGN KEY (idUtente) REFERENCES Utente(idUtente)
+    tipoUtente VARCHAR(50) DEFAULT "utente",
+   	indirizzo VARCHAR(50)
 );
 
 DROP TABLE IF EXISTS Corso;
@@ -106,3 +99,4 @@ BEGIN
 END; //
 
 DELIMITER ;
+
